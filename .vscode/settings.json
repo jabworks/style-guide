@@ -1,17 +1,18 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  "files.watcherExclude": {
-    "**/.git/objects/**": true,
-    "**/.git/subtree-cache/**": true,
-    "**/.hg/store/**": true,
-    "**/.git/**": true,
-    "**/.next/**": true,
-    "**/dist/**": true,
-    "**/node_modules/**": true,
-    "**/.vscode/**": true
-  }
+	"eslint.workingDirectories": [
+		{
+			"mode": "auto"
+		}
+	],
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/.hg/store/**": true,
+		"**/.git/**": true,
+		"**/.next/**": true,
+		"**/dist/**": true,
+		"**/node_modules/**": true,
+		"**/.vscode/**": true
+	},
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

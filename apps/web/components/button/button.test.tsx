@@ -4,7 +4,7 @@ import { render } from 'vitest-browser-react';
 import { Button } from './button';
 
 test('counter button increments the count', async () => {
-	const screen = render(<Button defaultCount={1} />);
+	const screen = await render(<Button defaultCount={1} />);
 
 	await screen.getByRole('button', { name: /count: 1/i }).click();
 
@@ -12,15 +12,15 @@ test('counter button increments the count', async () => {
 });
 
 describe('Button component', () => {
-	test('renders with default count', () => {
-		const { getByRole } = render(<Button defaultCount={1} />);
+	test('renders with default count', async () => {
+		const { getByRole } = await render(<Button defaultCount={1} />);
 		const button = getByRole('button', { name: /count: 1/i });
 
 		expect(button).toBeInTheDocument();
 	});
 
 	test('increments count on click', async () => {
-		const { getByRole } = render(<Button defaultCount={1} />);
+		const { getByRole } = await render(<Button defaultCount={1} />);
 		const button = getByRole('button', { name: /count: 1/i });
 
 		await button.click();

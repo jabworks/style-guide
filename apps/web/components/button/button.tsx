@@ -10,12 +10,12 @@ export const Button = ({ className, defaultCount, ...props }: ButtonProps) => {
 	const [count, setCount] = useState(defaultCount);
 
 	const handleClick = () => {
-		setCount((prevCount) => prevCount + 1);
+		setCount(prevCount => prevCount + 1);
 	};
 
 	return (
 		<button
-			className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${className ?? ''}`}
+			className={`rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 ${className ?? ''}`}
 			type='button'
 			onClick={handleClick}
 			{...props}

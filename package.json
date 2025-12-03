@@ -10,18 +10,18 @@
 		"release": "changeset publish"
 	},
 	"devDependencies": {
-		"@changesets/changelog-github": "^0.5.1",
-		"@changesets/cli": "^2.29.7",
+		"@changesets/changelog-github": "^0.5.2",
+		"@changesets/cli": "^2.29.8",
 		"@jabworks/prettier-config": "workspace:*",
 		"changesets": "^1.0.2",
-		"prettier": "^3.6.2",
-		"prettier-plugin-packagejson": "^2.5.19",
+		"prettier": "^3.7.4",
+		"prettier-plugin-packagejson": "^2.5.20",
 		"prettier-plugin-sort-json": "^4.1.1",
-		"prettier-plugin-tailwindcss": "^0.6.14",
-		"turbo": "^2.5.8",
+		"prettier-plugin-tailwindcss": "^0.7.2",
+		"turbo": "^2.6.1",
 		"typescript": "5.9.3"
 	},
-	"packageManager": "pnpm@10.18.0+sha512.e804f889f1cecc40d572db084eec3e4881739f8dec69c0ff10d2d1beff9a4e309383ba27b5b750059d7f4c149535b6cd0d2cb1ed3aeb739239a4284a68f40cfa",
+	"packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a",
 	"engines": {
 		"node": ">=22"
 	}

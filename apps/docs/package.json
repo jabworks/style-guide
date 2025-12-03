@@ -1,16 +1,16 @@
 {
 	"dependencies": {
-		"next": "^15.5.4",
+		"next": "^16.0.7",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0"
 	},
 	"devDependencies": {
 		"@jabworks/eslint-plugin": "workspace:*",
 		"@jabworks/typescript-config": "workspace:*",
-		"@types/node": "^24.6.2",
-		"@types/react": "19.2.0",
-		"@types/react-dom": "19.2.0",
-		"eslint": "^9.36.0",
+		"@types/node": "^24.10.1",
+		"@types/react": "19.2.7",
+		"@types/react-dom": "19.2.3",
+		"eslint": "^9.39.1",
 		"typescript": "5.9.3"
 	},
 	"name": "docs",

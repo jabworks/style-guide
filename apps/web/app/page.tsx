@@ -31,7 +31,7 @@ const Home = () => {
 		<div className={styles.page}>
 			<main className={styles.main}>
 				<ThemeImage
-					priority
+					preload
 					alt='Turborepo logo'
 					className={styles.logo}
 					height={38}
