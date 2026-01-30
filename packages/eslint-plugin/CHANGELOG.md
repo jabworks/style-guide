@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 1.1.1
+
+### Patch Changes
+
+- Tweak eslint configs
+
 ## 1.1.0
 
 ### Minor Changes
