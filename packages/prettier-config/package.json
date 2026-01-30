@@ -1,36 +1,44 @@
 {
-	"name": "@jabworks/prettier-config",
-	"version": "0.1.3",
-	"description": "",
-	"keywords": [],
-	"license": "ISC",
-	"author": "Harvey Vi",
-	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.js",
-			"types": "./dist/index.d.ts",
-			"default": "./dist/index.js"
-		}
-	},
-	"main": "src/index.ts",
-	"scripts": {
-		"build": "tsc"
-	},
-	"dependencies": {
-		"prettier": "^3.7.4",
-		"prettier-plugin-packagejson": "^2.5.20",
-		"prettier-plugin-sort-json": "^4.1.1",
-		"prettier-plugin-tailwindcss": "^0.7.2"
-	},
-	"devDependencies": {
-		"@jabworks/typescript-config": "workspace:*",
-		"typescript": "^5.9.3"
-	},
-	"peerDependencies": {
-		"prettier": ">=3.6.2",
-		"prettier-plugin-packagejson": ">=2.5.19",
-		"prettier-plugin-sort-json": ">=4.1.1",
-		"prettier-plugin-tailwindcss": ">=0.6.14"
-	}
+  "name": "@jabworks/prettier-config",
+  "version": "0.1.3",
+  "description": "Opinionated Prettier config for JS, TS, React, Next.js, JSON, and more",
+  "keywords": [
+    "prettier",
+    "prettier-config",
+    "prettier-plugin"
+  ],
+  "homepage": "https://github.com/jabworks/style-guide/tree/main/packages/prettier-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabworks/style-guide.git",
+    "directory": "packages/prettier-config"
+  },
+  "license": "MIT",
+  "author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@jabworks/typescript-config": "workspace:*",
+    "prettier": "^3.8.1",
+    "prettier-plugin-packagejson": "^3.0.0",
+    "prettier-plugin-sort-json": "^4.2.0",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "prettier": ">=3.8.1",
+    "prettier-plugin-packagejson": ">=3.0.0",
+    "prettier-plugin-sort-json": ">=4.2.0",
+    "prettier-plugin-tailwindcss": ">=0.7.2"
+  }
 }

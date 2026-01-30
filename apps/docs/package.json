@@ -1,27 +1,28 @@
 {
-	"dependencies": {
-		"next": "^16.0.7",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0"
-	},
-	"devDependencies": {
-		"@jabworks/eslint-plugin": "workspace:*",
-		"@jabworks/typescript-config": "workspace:*",
-		"@types/node": "^24.10.1",
-		"@types/react": "19.2.7",
-		"@types/react-dom": "19.2.3",
-		"eslint": "^9.39.1",
-		"typescript": "5.9.3"
-	},
-	"name": "docs",
-	"private": true,
-	"scripts": {
-		"build": "next build",
-		"check-types": "tsc --noEmit",
-		"dev": "next dev --turbopack --port 3001",
-		"lint": "next lint --max-warnings 0",
-		"start": "next start"
-	},
-	"type": "module",
-	"version": "0.1.0"
+  "name": "docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "check-types": "tsc --noEmit",
+    "dev": "next dev --turbopack --port 3001",
+    "lint": "eslint --max-warnings 0",
+    "lint:fix": "eslint --fix",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@jabworks/eslint-plugin": "workspace:*",
+    "@jabworks/typescript-config": "workspace:*",
+    "@types/node": "^25.1.0",
+    "@types/react": "19.2.10",
+    "@types/react-dom": "19.2.3",
+    "eslint": "^9.39.2",
+    "typescript": "5.9.3"
+  }
 }

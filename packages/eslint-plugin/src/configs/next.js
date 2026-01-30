@@ -12,75 +12,77 @@ import tseslintConfigs, { tseslintConfig } from './typescript.js';
 
 /** @type {import('eslint').Linter.Config[]} */
 const configs = [
-	...baseConfig,
-	js.configs.recommended,
-	eslintConfigPrettier,
-	importPlugin.flatConfigs.recommended,
-	pluginReact.configs.flat.recommended,
-	...tseslintConfigs,
-	{
-		name: '@jabworks/eslint-config-nextjs',
-		plugins: {
-			'@next/next': pluginNext,
-			'react-hooks': pluginReactHooks,
-		},
-		languageOptions: {
-			...pluginReact.configs.flat.recommended?.languageOptions,
-			globals: {
-				...globals.serviceworker,
-			},
-			parserOptions: {
-				projectService: true,
-				tsconfigRootDir: import.meta.dirname,
-			},
-		},
-		settings: {
-			'import/resolver': { node: {} },
-			react: { version: 'detect' },
-		},
-		linterOptions: {
-			reportUnusedDisableDirectives: true,
-		},
-		rules: {
-			...pluginReactHooks.configs['recommended-latest'].rules,
-			...reactRules,
-			...pluginNext.configs.recommended.rules,
-			...pluginNext.configs['core-web-vitals'].rules,
-			...tseslintConfig.rules,
-		},
-	},
-	{
-		files: [
-			'*.config.cjs',
-			'*.config.js',
-			'*.config.mjs',
-			'*.config.ts',
-			'**/*.d.ts',
-			'**/*.stories.ts',
-			'**/*.stories.tsx',
-			'app/**/*error.tsx',
-			'app/**/layout.tsx',
-			'app/**/not-found.tsx',
-			'app/**/opengraph-image.tsx',
-			'app/**/page.tsx',
-			'app/apple-icon.tsx',
-			'app/robots.ts',
-			'app/sitemap.ts',
-			'next.config.mjs',
-			'src/app/**/*error.tsx',
-			'src/app/**/layout.tsx',
-			'src/app/**/not-found.tsx',
-			'src/app/**/opengraph-image.tsx',
-			'src/app/**/page.tsx',
-			'src/app/apple-icon.tsx',
-			'src/app/robots.ts',
-			'src/app/sitemap.ts',
-		],
-		rules: {
-			'import/no-default-export': 'off',
-			'import/prefer-default-export': ['error', { target: 'any' }],
-		},
-	},
+  ...baseConfig,
+  js.configs.recommended,
+  eslintConfigPrettier,
+  importPlugin.flatConfigs.recommended,
+  pluginReact.configs.flat.recommended,
+  pluginReact.configs.flat['jsx-runtime'],
+  ...tseslintConfigs,
+  {
+    name: '@jabworks/eslint-config-nextjs',
+    plugins: {
+      '@next/next': pluginNext,
+      'react-hooks': pluginReactHooks,
+    },
+    languageOptions: {
+      ...pluginReact.configs.flat.recommended?.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      'import/resolver': { node: {} },
+      react: { version: 'detect' },
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
+    },
+    rules: {
+      ...pluginReactHooks.configs['recommended-latest'].rules,
+      ...reactRules,
+      ...pluginNext.configs.recommended.rules,
+      ...pluginNext.configs['core-web-vitals'].rules,
+      ...tseslintConfig.rules,
+    },
+  },
+  {
+    files: [
+      '*.config.ts',
+      '**/*.d.ts',
+      '**/*.stories.ts',
+      '**/*.stories.tsx',
+      'app/**/*error.tsx',
+      'app/**/layout.tsx',
+      'app/**/not-found.tsx',
+      'app/**/opengraph-image.tsx',
+      'app/**/page.tsx',
+      'app/apple-icon.tsx',
+      'app/robots.ts',
+      'app/sitemap.ts',
+      'next.config.mjs',
+      'src/app/**/*error.tsx',
+      'src/app/**/layout.tsx',
+      'src/app/**/not-found.tsx',
+      'src/app/**/opengraph-image.tsx',
+      'src/app/**/page.tsx',
+      'src/app/apple-icon.tsx',
+      'src/app/robots.ts',
+      'src/app/sitemap.ts',
+    ],
+    rules: {
+      'import/no-default-export': 'off',
+      'import/prefer-default-export': ['error', { target: 'any' }],
+    },
+  },
+  {
+    ignores: ['.next/**'],
+  },
 ];
 
 export default configs;

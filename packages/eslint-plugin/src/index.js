@@ -10,16 +10,16 @@ const { name, version } = pkg;
 
 /** @type {import('eslint').ESLint.Plugin} */
 export const plugin = {
-	meta: {
-		name,
-		version,
-	},
-	configs: {
-		base,
-		comments,
-		next,
-		react,
-		typescript,
-		vitest,
-	},
+  meta: {
+    name,
+    version,
+  },
+  configs: {
+    base,
+    comments,
+    next,
+    react,
+    typescript,
+    vitest,
+  },
 };

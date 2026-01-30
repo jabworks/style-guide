@@ -1,37 +1,38 @@
 {
-	"name": "web",
-	"version": "0.1.0",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"build": "next build",
-		"check-types": "tsc --noEmit",
-		"coverage": "vitest run --coverage",
-		"dev": "next dev --turbopack --port 3000",
-		"lint": "next lint --max-warnings 0",
-		"start": "next start",
-		"test": "vitest"
-	},
-	"dependencies": {
-		"next": "^16.0.7",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0"
-	},
-	"devDependencies": {
-		"@jabworks/eslint-plugin": "workspace:*",
-		"@jabworks/typescript-config": "workspace:*",
-		"@types/node": "^24.10.1",
-		"@types/react": "19.2.7",
-		"@types/react-dom": "19.2.3",
-		"@vitejs/plugin-react": "^5.1.1",
-		"@vitest/browser-playwright": "^4.0.15",
-		"@vitest/browser-preview": "^4.0.15",
-		"@vitest/coverage-v8": "4.0.15",
-		"eslint": "^9.39.1",
-		"jsdom": "^27.2.0",
-		"playwright": "^1.57.0",
-		"typescript": "5.9.3",
-		"vitest": "^4.0.15",
-		"vitest-browser-react": "^2.0.2"
-	}
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "check-types": "tsc --noEmit",
+    "coverage": "vitest run --coverage",
+    "dev": "next dev --turbopack --port 3000",
+    "lint": "eslint --max-warnings 0",
+    "lint:fix": "eslint --fix",
+    "start": "next start",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@jabworks/eslint-plugin": "workspace:*",
+    "@jabworks/typescript-config": "workspace:*",
+    "@types/node": "^25.1.0",
+    "@types/react": "19.2.10",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/browser-playwright": "^4.0.18",
+    "@vitest/browser-preview": "^4.0.18",
+    "@vitest/coverage-v8": "4.0.18",
+    "eslint": "^9.39.2",
+    "jsdom": "^27.4.0",
+    "playwright": "^1.58.0",
+    "typescript": "5.9.3",
+    "vitest": "^4.0.18",
+    "vitest-browser-react": "^2.0.5"
+  }
 }

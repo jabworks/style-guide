@@ -1,12 +1,31 @@
 {
-	"author": "",
-	"description": "",
-	"keywords": [],
-	"license": "ISC",
-	"main": "index.js",
-	"name": "@jabworks/stylelint-config",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"version": "0.0.0"
+  "name": "@jabworks/stylelint-config",
+  "version": "0.0.0",
+  "description": "Opinionated Stylelint config for modern CSS",
+  "keywords": [
+    "stylelint",
+    "stylelint-config"
+  ],
+  "homepage": "https://github.com/jabworks/style-guide/tree/main/packages/stylelint-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabworks/style-guide.git",
+    "directory": "packages/stylelint-config"
+  },
+  "license": "MIT",
+  "author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "stylelint": "^17.0.0",
+    "stylelint-config-recess-order": "^7.6.0",
+    "stylelint-config-standard": "^40.0.0"
+  },
+  "peerDependencies": {
+    "stylelint": ">=17.0.0",
+    "stylelint-config-recess-order": ">=7.6.0",
+    "stylelint-config-standard": ">=40.0.0"
+  }
 }
