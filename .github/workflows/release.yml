@@ -27,7 +27,7 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: build
+      - name: Build
         uses: ./.github/composite-actions/build
 
       - name: Install npm 11.5.1+ for OIDC support

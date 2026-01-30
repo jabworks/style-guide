@@ -27,7 +27,6 @@ runs:
       shell: bash
       run: |
         corepack enable
-        corepack prepare pnpm@10.11.0 --activate
         pnpm install
 
     - name: Setup turbo
