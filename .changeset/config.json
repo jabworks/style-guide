@@ -1,16 +1,16 @@
 {
-	"$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
-	"access": "public",
-	"baseBranch": "main",
-	"changelog": [
-		"@changesets/changelog-github",
-		{
-			"repo": "hieu1871998/style-guide"
-		}
-	],
-	"commit": false,
-	"fixed": [],
-	"ignore": [],
-	"linked": [],
-	"updateInternalDependencies": "patch"
+  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+  "access": "public",
+  "baseBranch": "main",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "jabworks/style-guide"
+    }
+  ],
+  "commit": false,
+  "fixed": [],
+  "ignore": [],
+  "linked": [],
+  "updateInternalDependencies": "patch"
 }

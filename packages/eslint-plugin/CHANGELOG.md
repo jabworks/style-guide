@@ -1,5 +1,12 @@
 # @jabworks/eslint-plugin
 
+## 1.1.0
+
+### Minor Changes
+
+- Bump deps version
+- Update react rules in next config
+
 ## 1.0.6
 
 ### Patch Changes
