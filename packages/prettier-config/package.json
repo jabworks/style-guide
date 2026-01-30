@@ -1,6 +1,6 @@
 {
   "name": "@jabworks/prettier-config",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Opinionated Prettier config for JS, TS, React, Next.js, JSON, and more",
   "keywords": [
     "prettier",

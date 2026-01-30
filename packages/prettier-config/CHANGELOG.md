@@ -1,5 +1,11 @@
 # @jabworks/prettier-config
 
+## 1.0.0
+
+### Major Changes
+
+- Official release with finalized package info
+
 ## 0.1.3
 
 ### Patch Changes
