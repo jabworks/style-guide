@@ -39,7 +39,7 @@ npm install -D prettier prettier-plugin-packagejson prettier-plugin-sort-json pr
 
 ### Method 1: Prettier Configuration File (Recommended)
 
-Create a `prettier.config.js` file in your project root:
+Create a `prettier.config.mjs` file in your project root:
 
 ```javascript
 import { config } from '@jabworks/prettier-config';
@@ -125,13 +125,13 @@ This configuration includes the following settings:
 
 ```javascript
 // Before
-const example = { c: 1, a: 2, b: 3 };
-function test(a, b, c) {
+const example = { c: 1, a: 2, b: 3, longKey: 4 };
+function test( a,  b, c ) {
 	return a + b + c;
 }
 
 // After
-const example = { a: 2, b: 3, c: 1 };
+const example = { c: 1, a: 2, b: 3, longKey: 4 };
 function test(a, b, c) {
 	return a + b + c;
 }
@@ -209,14 +209,12 @@ Add these scripts to your `package.json`:
 
 ## Compatibility
 
-- **Prettier**: >=3.6.2
-- **Node.js**: >=18.0.0
-- **TypeScript**: >=5.0.0
+- **Prettier**: >=3.8.1
 
 ## License
 
-ISC
+MIT
 
 ## Contributing
 
-This package is part of the [@jabworks style guide monorepo](https://github.com/hieu1871998/style-guide). Please refer to the main repository for contribution guidelines.
+This package is part of the [@jabworks style guide monorepo](https://github.com/jabworks/style-guide). Please refer to the main repository for contribution guidelines.

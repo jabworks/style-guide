@@ -41,13 +41,7 @@ export default [
 ];
 ```
 
-Or, if using legacy config:
-
-```json
-{
-	"extends": ["plugin:@jabworks/base"]
-}
-```
+Legacy `.eslintrc` configs are not provided. Use flat config with ESLint v9+.
 
 ## Available Configs
 
@@ -70,6 +64,10 @@ import myUtil from '@/utils/myUtil';
 import helper from './helper';
 import styles from './styles.css';
 ```
+
+## Compatibility
+
+- **ESLint**: >=9.39.2
 
 ## License
 
