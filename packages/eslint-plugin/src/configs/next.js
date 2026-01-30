@@ -5,6 +5,7 @@ import importPlugin from 'eslint-plugin-import';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
+import jsxA11yRules from '../rules/jsx-a11y.js';
 
 import reactRules from '../rules/react.js';
 import baseConfig from './base.js';
@@ -49,6 +50,7 @@ const configs = [
       ...pluginNext.configs.recommended.rules,
       ...pluginNext.configs['core-web-vitals'].rules,
       ...tseslintConfig.rules,
+      ...jsxA11yRules,
     },
   },
   {

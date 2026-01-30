@@ -10,6 +10,7 @@ import es6 from '../rules/es6.js';
 import importConfig from '../rules/import.js';
 import possibleErrors from '../rules/possible-errors.js';
 import stylistic from '../rules/stylistic.js';
+import unicornRules from '../rules/unicorn.js';
 import variables from '../rules/variables.js';
 import comments from './comments.js';
 
@@ -27,6 +28,7 @@ export const baseConfig = {
     ...possibleErrors,
     ...stylistic,
     ...variables,
+    ...unicornRules,
   },
 };
 
