@@ -1,5 +1,11 @@
 # @jabworks/prettier-config
 
+## 1.1.1
+
+### Patch Changes
+
+- Tweak package dependencies
+
 ## 1.1.0
 
 ### Minor Changes

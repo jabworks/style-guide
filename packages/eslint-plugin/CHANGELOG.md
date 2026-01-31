@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 1.1.3
+
+### Patch Changes
+
+- Tweak package dependencies
+
 ## 1.1.2
 
 ### Patch Changes
