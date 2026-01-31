@@ -1,5 +1,9 @@
 import { type Config } from 'prettier';
 
+import * as packageJson from 'prettier-plugin-packagejson';
+import * as sortJson from 'prettier-plugin-sort-json';
+import * as tailwindcss from 'prettier-plugin-tailwindcss';
+
 export const config: Config = {
   arrowParens: 'avoid',
   bracketSameLine: false,
@@ -14,19 +18,19 @@ export const config: Config = {
   tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,
-  plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-sort-json', 'prettier-plugin-packagejson'],
+  plugins: [tailwindcss, sortJson, packageJson],
   overrides: [
     {
       files: ['package.json', '**/package.json'],
       options: {
-        plugins: ['prettier-plugin-packagejson'],
+        plugins: [packageJson],
       },
     },
     {
       files: ['**/*.json'],
       excludeFiles: ['package.json', '**/package.json'],
       options: {
-        plugins: ['prettier-plugin-sort-json'],
+        plugins: [sortJson],
       },
     },
   ],
