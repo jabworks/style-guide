@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 1.1.2
+
+### Patch Changes
+
+- Update peer deps
+
 ## 1.1.1
 
 ### Patch Changes
