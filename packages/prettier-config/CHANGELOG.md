@@ -1,5 +1,11 @@
 # @jabworks/prettier-config
 
+## 1.1.2
+
+### Patch Changes
+
+- Import external plugins directly
+
 ## 1.1.1
 
 ### Patch Changes
