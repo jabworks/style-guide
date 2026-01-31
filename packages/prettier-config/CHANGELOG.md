@@ -1,5 +1,11 @@
 # @jabworks/prettier-config
 
+## 1.1.0
+
+### Minor Changes
+
+- Use tsdown to bundle prettier config
+
 ## 1.0.1
 
 ### Patch Changes
