@@ -1,6 +1,6 @@
 {
   "name": "@jabworks/stylelint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "Opinionated Stylelint config for modern CSS",
   "keywords": [
