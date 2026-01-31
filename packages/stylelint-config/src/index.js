@@ -5,8 +5,18 @@ const config = {
     'at-rule-no-unknown': [
       true,
       {
-        /** Ignore TailwindCSS V4 at-rules */
-        ignoreAtRules: ['theme', 'source', 'utility', 'variant', 'custom-variant', 'apply', 'reference'],
+        ignoreAtRules: [
+          /** Ignore TailwindCSS V4 at-rules */
+          'theme',
+          'source',
+          'utility',
+          'variant',
+          'custom-variant',
+          'apply',
+          'reference',
+          /** Ignore CSS Module at-rules */
+          'value',
+        ],
       },
     ],
   },
