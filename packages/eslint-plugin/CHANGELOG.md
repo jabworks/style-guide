@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 1.1.5
+
+### Patch Changes
+
+- Add `@typescript-eslint/parser` to dependencies
+
 ## 1.1.4
 
 ### Patch Changes
