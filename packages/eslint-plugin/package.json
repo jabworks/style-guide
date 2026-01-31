@@ -12,6 +12,9 @@
     "typescript-eslint"
   ],
   "homepage": "https://github.com/jabworks/style-guide/tree/main/packages/eslint-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/jabworks/style-guide/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jabworks/style-guide.git",
@@ -28,6 +31,10 @@
   },
   "main": "./src/index.js",
   "types": "./src/types/index.d.ts",
+  "files": [
+    "src/index.js",
+    "src/types/index.d.ts"
+  ],
   "dependencies": {
     "globals": "^17.2.0"
   },
@@ -58,21 +65,24 @@
     "typescript-eslint": "^8.54.0"
   },
   "peerDependencies": {
-    "@eslint-community/eslint-plugin-eslint-comments": ">=4.6.0",
-    "@next/eslint-plugin-next": ">=16.1.6",
-    "@vitest/eslint-plugin": ">=1.6.6",
-    "eslint": ">=9.39.2",
-    "eslint-plugin-import": ">=2.32.0",
-    "eslint-plugin-jest": ">=29.12.1",
-    "eslint-plugin-jsx-a11y": ">=6.10.2",
-    "eslint-plugin-playwright": ">=2.5.1",
-    "eslint-plugin-react": ">=7.37.5",
-    "eslint-plugin-react-hooks": ">=7.0.1",
-    "eslint-plugin-simple-import-sort": ">=12.1.1",
-    "eslint-plugin-testing-library": ">=7.13.5",
-    "eslint-plugin-turbo": ">=2.8.0",
-    "eslint-plugin-unicorn": ">=62.0.0",
-    "typescript": ">=5.9.3",
-    "typescript-eslint": ">=8.54.0"
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.6.0",
+    "@next/eslint-plugin-next": "^16.1.6",
+    "@vitest/eslint-plugin": "^1.6.6",
+    "eslint": "^9.39.2",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jest": "^29.12.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-playwright": "^2.5.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-testing-library": "^7.13.5",
+    "eslint-plugin-turbo": "^2.8.0",
+    "eslint-plugin-unicorn": "^62.0.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,6 +1,7 @@
 {
   "name": "@jabworks/prettier-config",
   "version": "1.0.1",
+  "private": false,
   "description": "Opinionated Prettier config for JS, TS, React, Next.js, JSON, and more",
   "keywords": [
     "prettier",
@@ -8,6 +9,9 @@
     "prettier-plugin"
   ],
   "homepage": "https://github.com/jabworks/style-guide/tree/main/packages/prettier-config#readme",
+  "bugs": {
+    "url": "https://github.com/jabworks/style-guide/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jabworks/style-guide.git",
@@ -18,14 +22,18 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "default": "./dist/index.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsdown"
   },
   "devDependencies": {
     "@jabworks/typescript-config": "workspace:*",
@@ -33,12 +41,16 @@
     "prettier-plugin-packagejson": "^3.0.0",
     "prettier-plugin-sort-json": "^4.2.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "tsdown": "^0.20.1",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "prettier": ">=3.8.1",
-    "prettier-plugin-packagejson": ">=3.0.0",
-    "prettier-plugin-sort-json": ">=4.2.0",
-    "prettier-plugin-tailwindcss": ">=0.7.2"
+    "prettier": "^3.8.1",
+    "prettier-plugin-packagejson": "^3.0.0",
+    "prettier-plugin-sort-json": "^4.2.0",
+    "prettier-plugin-tailwindcss": "^0.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
