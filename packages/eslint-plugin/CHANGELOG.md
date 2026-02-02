@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 1.1.6
+
+### Patch Changes
+
+- Fix files inclusion in package.json
+
 ## 1.1.5
 
 ### Patch Changes
