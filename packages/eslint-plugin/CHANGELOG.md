@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 1.1.8
+
+### Patch Changes
+
+- [#17](https://github.com/jabworks/style-guide/pull/17) [`5ba5ba0`](https://github.com/jabworks/style-guide/commit/5ba5ba0c6d5a1970fbb94194cfeffd14ddce057d) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Downgrade eslint version to v9
+
 ## 1.1.7
 
 ### Patch Changes
