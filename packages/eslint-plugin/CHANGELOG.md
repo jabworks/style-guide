@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 1.1.7
+
+### Patch Changes
+
+- Update deps
+
 ## 1.1.6
 
 ### Patch Changes
