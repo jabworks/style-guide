@@ -1,0 +1,3 @@
+{
+	"extends": ["@jabworks/typescript-config/base.json"]
+}

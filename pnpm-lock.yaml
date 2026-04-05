@@ -213,6 +213,15 @@ importers:
         specifier: ^6.0.2
         version: 6.0.2
 
+  packages/oxlint-config:
+    devDependencies:
+      '@jabworks/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      typescript:
+        specifier: ^6.0.2
+        version: 6.0.2
+
   packages/prettier-config:
     dependencies:
       prettier-plugin-packagejson:
