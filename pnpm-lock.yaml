@@ -218,6 +218,9 @@ importers:
       '@jabworks/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      tsdown:
+        specifier: ^0.21.7
+        version: 0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(typescript@6.0.2)
       typescript:
         specifier: ^6.0.2
         version: 6.0.2

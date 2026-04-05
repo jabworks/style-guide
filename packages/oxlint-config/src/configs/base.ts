@@ -1,3 +1,4 @@
+import type { OxlintConfig } from '../types.js';
 import bestPracticeRules from '../rules/best-practice.js';
 import es6Rules from '../rules/es6.js';
 import importRules from '../rules/import.js';
@@ -12,7 +13,7 @@ import variablesRules from '../rules/variables.js';
  * Includes core ESLint rules for best practices, ES6+, imports,
  * possible errors, stylistic preferences, variables, and unicorn.
  */
-const config = {
+const config: OxlintConfig = {
 	plugins: ['import', 'unicorn'],
 	categories: {
 		correctness: 'error',

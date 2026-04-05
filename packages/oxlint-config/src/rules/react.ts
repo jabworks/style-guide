@@ -1,14 +1,15 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * React rules for oxlint.
  *
  * Maps eslint-plugin-react rules to their oxlint `react/` equivalents.
  */
 
-/** @type {Record<string, string>} */
 const disabledRules = {
 	'react/prop-types': 'off',
 	'react/react-in-jsx-scope': 'off',
-};
+} satisfies OxlintRules;
 
 const rules = {
 	...disabledRules,
@@ -89,6 +90,6 @@ const rules = {
 	 * 🔧 Fixable - https://oxc.rs/docs/guide/usage/linter/rules/react/self-closing-comp.html
 	 */
 	'react/self-closing-comp': 'warn',
-};
+} satisfies OxlintRules;
 
 export default rules;

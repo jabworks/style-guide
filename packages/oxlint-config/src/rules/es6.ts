@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * ES6+ rules for oxlint.
  *
@@ -65,6 +67,6 @@ const rules = {
 	 * 🚫 Not fixable - https://oxc.rs/docs/guide/usage/linter/rules/eslint/symbol-description.html
 	 */
 	'eslint/symbol-description': 'error',
-};
+} satisfies OxlintRules;
 
 export default rules;

@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * Unicorn rules for oxlint.
  *
@@ -15,6 +17,6 @@ const rules = {
 			case: 'kebabCase',
 		},
 	],
-};
+} satisfies OxlintRules;
 
 export default rules;

@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * Vitest rules for oxlint.
  *
@@ -9,6 +11,6 @@ const rules = {
 	'vitest/no-disabled-tests': 'error',
 	'vitest/no-focused-tests': 'error',
 	'vitest/no-identical-title': 'error',
-};
+} satisfies OxlintRules;
 
 export default rules;

@@ -1,4 +1,4 @@
-import pkg from '../package.json' with { type: 'json' };
+import type { OxlintConfig } from './types.js';
 import base from './configs/base.js';
 import next from './configs/next.js';
 import react from './configs/react.js';
@@ -6,7 +6,8 @@ import typescript from './configs/typescript.js';
 import vitest from './configs/vitest.js';
 import { mergeConfigs } from './lib/utils.js';
 
-const { name, version } = pkg;
+export type { OxlintConfig, OxlintOverride, OxlintRules, RuleSeverity, RuleValue } from './types.js';
+export { mergeConfigs } from './lib/utils.js';
 
 /**
  * @jabworks/oxlint-config
@@ -18,8 +19,8 @@ const { name, version } = pkg;
  */
 export const config = {
 	meta: {
-		name,
-		version,
+		name: '@jabworks/oxlint-config',
+		version: '0.1.0',
 	},
 	configs: {
 		base,
@@ -29,4 +30,8 @@ export const config = {
 		vitest,
 	},
 	mergeConfigs,
+} as const satisfies {
+	meta: { name: string; version: string };
+	configs: Record<string, OxlintConfig>;
+	mergeConfigs: typeof mergeConfigs;
 };

@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * JSX accessibility rules for oxlint.
  *
@@ -5,6 +7,6 @@
  */
 const rules = {
 	'jsx-a11y/no-autofocus': 'off',
-};
+} satisfies OxlintRules;
 
 export default rules;

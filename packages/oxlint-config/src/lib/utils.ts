@@ -1,12 +1,11 @@
+import type { OxlintConfig } from '../types.js';
+
 /**
  * Deep merge multiple oxlint config objects into one.
  * Arrays are concatenated, objects are deeply merged, and primitives are overwritten.
- *
- * @param  {...object} configs - Partial oxlint config objects to merge.
- * @returns {object} A merged oxlint config object.
  */
-export function mergeConfigs(...configs) {
-	const result = {
+export function mergeConfigs(...configs: (OxlintConfig | undefined | null)[]): OxlintConfig {
+	const result: Required<OxlintConfig> = {
 		plugins: [],
 		categories: {},
 		rules: {},

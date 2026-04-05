@@ -1,3 +1,4 @@
+import type { OxlintConfig } from '../types.js';
 import { TYPESCRIPT_FILES } from '../lib/constants.js';
 import typescriptExtensionRules from '../rules/typescript.extension.js';
 import typescriptRules from '../rules/typescript.js';
@@ -8,7 +9,7 @@ import typescriptRules from '../rules/typescript.js';
  * Applies strict TypeScript type-checking rules.
  * Should be used together with the base config.
  */
-const config = {
+const config: OxlintConfig = {
 	plugins: ['typescript'],
 	rules: {
 		...typescriptRules,

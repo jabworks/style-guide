@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * Best practice rules for oxlint.
  *
@@ -166,6 +168,6 @@ const rules = {
 	 * 🔧 Fixable - https://oxc.rs/docs/guide/usage/linter/rules/eslint/yoda.html
 	 */
 	'eslint/yoda': 'warn',
-};
+} satisfies OxlintRules;
 
 export default rules;

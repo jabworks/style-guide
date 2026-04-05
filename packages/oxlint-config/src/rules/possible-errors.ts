@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * Possible error rules for oxlint.
  *
@@ -34,6 +36,6 @@ const rules = {
 	 * 🚫 Not fixable - https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-unreachable-loop.html
 	 */
 	// 'eslint/no-unreachable-loop': 'error',
-};
+} satisfies OxlintRules;
 
 export default rules;

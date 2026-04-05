@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * Import rules for oxlint.
  *
@@ -5,12 +7,11 @@
  * Note: `simple-import-sort` rules are not available in oxlint.
  */
 
-/** @type {Record<string, string>} */
 const disabledRules = {
 	'import/named': 'off',
 	'import/no-cycle': 'off',
 	'import/order': 'off',
-};
+} satisfies OxlintRules;
 
 const rules = {
 	/**
@@ -55,6 +56,6 @@ const rules = {
 	 * Note: simple-import-sort rules are not available in oxlint.
 	 */
 	...disabledRules,
-};
+} satisfies OxlintRules;
 
 export default rules;

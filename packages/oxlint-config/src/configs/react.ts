@@ -1,6 +1,7 @@
+import type { OxlintConfig } from '../types.js';
+import { mergeConfigs } from '../lib/utils.js';
 import jsxA11yRules from '../rules/jsx-a11y.js';
 import reactRules from '../rules/react.js';
-import { mergeConfigs } from '../lib/utils.js';
 import baseConfig from './base.js';
 import typescriptConfig from './typescript.js';
 
@@ -10,7 +11,7 @@ import typescriptConfig from './typescript.js';
  * Includes base + TypeScript configs plus React-specific rules.
  * Suitable for React library projects with TypeScript.
  */
-const reactOnlyConfig = {
+const reactOnlyConfig: OxlintConfig = {
 	plugins: ['react', 'jsx-a11y'],
 	rules: {
 		...reactRules,

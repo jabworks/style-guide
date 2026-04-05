@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * Variable rules for oxlint.
  *
@@ -31,6 +33,6 @@ const rules = {
 			varsIgnorePattern: '^_',
 		},
 	],
-};
+} satisfies OxlintRules;
 
 export default rules;

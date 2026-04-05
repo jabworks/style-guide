@@ -1,8 +1,9 @@
+import type { OxlintConfig } from '../types.js';
+import { mergeConfigs } from '../lib/utils.js';
 import jsxA11yRules from '../rules/jsx-a11y.js';
 import reactRules from '../rules/react.js';
 import typescriptExtensionRules from '../rules/typescript.extension.js';
 import typescriptRules from '../rules/typescript.js';
-import { mergeConfigs } from '../lib/utils.js';
 import baseConfig from './base.js';
 import typescriptConfig from './typescript.js';
 
@@ -12,7 +13,7 @@ import typescriptConfig from './typescript.js';
  * Includes base + TypeScript + React + Next.js-specific rules.
  * This is the recommended config for Next.js applications.
  */
-const nextOnlyConfig = {
+const nextOnlyConfig: OxlintConfig = {
 	plugins: ['react', 'jsx-a11y', 'nextjs'],
 	rules: {
 		...reactRules,

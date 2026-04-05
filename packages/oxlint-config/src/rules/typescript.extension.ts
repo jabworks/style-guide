@@ -1,3 +1,4 @@
+import type { OxlintRules } from '../types.js';
 // These share identical configuration options, so we want to keep them in sync.
 import noUnusedVarsRules from './variables.js';
 
@@ -31,6 +32,6 @@ const rules = {
 	 * 🚫 Not fixable - https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-useless-constructor.html
 	 */
 	'typescript/no-useless-constructor': 'error',
-};
+} satisfies OxlintRules;
 
 export default rules;

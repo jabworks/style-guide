@@ -23,17 +23,25 @@
 	},
 	"license": "MIT",
 	"author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
-	"type": "module",
 	"exports": {
 		".": {
-			"types": "./src/types/index.d.ts",
-			"import": "./src/index.js"
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs",
+			"default": "./dist/index.mjs"
 		}
 	},
-	"main": "./src/index.js",
-	"types": "./src/types/index.d.ts",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsdown"
+	},
 	"devDependencies": {
 		"@jabworks/typescript-config": "workspace:*",
+		"tsdown": "^0.21.7",
 		"typescript": "^6.0.2"
 	},
 	"publishConfig": {

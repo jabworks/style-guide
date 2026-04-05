@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * TypeScript rules for oxlint.
  *
@@ -89,6 +91,6 @@ const rules = {
 	 * 🚫 Not fixable - https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-empty-object-type.html
 	 */
 	'typescript/no-empty-object-type': ['error', { allowInterfaces: 'with-single-extends' }],
-};
+} satisfies OxlintRules;
 
 export default rules;

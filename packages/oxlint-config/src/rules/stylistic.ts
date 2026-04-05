@@ -1,3 +1,5 @@
+import type { OxlintRules } from '../types.js';
+
 /**
  * Stylistic rules for oxlint.
  *
@@ -53,6 +55,6 @@ const rules = {
 	 * 🔧 Fixable - https://oxc.rs/docs/guide/usage/linter/rules/eslint/prefer-arrow-callback.html
 	 */
 	// 'eslint/prefer-arrow-callback': 'warn',
-};
+} satisfies OxlintRules;
 
 export default rules;
