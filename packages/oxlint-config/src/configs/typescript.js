@@ -1,3 +1,4 @@
+import { TYPESCRIPT_FILES } from '../lib/constants.js';
 import typescriptExtensionRules from '../rules/typescript.extension.js';
 import typescriptRules from '../rules/typescript.js';
 
@@ -15,7 +16,7 @@ const config = {
 	},
 	overrides: [
 		{
-			files: ['*.ts', '*.tsx'],
+			files: TYPESCRIPT_FILES,
 			rules: {
 				// Disable base ESLint rules that are handled by TypeScript equivalents
 				'eslint/no-unused-vars': 'off',

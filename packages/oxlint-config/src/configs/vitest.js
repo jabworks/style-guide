@@ -1,3 +1,4 @@
+import { TEST_FILES } from '../lib/constants.js';
 import vitestRules from '../rules/vitest.js';
 
 /**
@@ -10,7 +11,7 @@ const config = {
 	plugins: ['vitest'],
 	overrides: [
 		{
-			files: ['**/*.test.{js,ts,mjs,cjs,jsx,tsx}', '**/__tests__/**', '**/tests/**'],
+			files: TEST_FILES,
 			rules: {
 				...vitestRules,
 			},
