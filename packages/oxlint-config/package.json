@@ -1,0 +1,50 @@
+{
+	"name": "@jabworks/oxlint-config",
+	"version": "0.1.0",
+	"private": false,
+	"description": "Opinionated oxlint configuration for JS, TS, React, and Next.js",
+	"keywords": [
+		"oxlint",
+		"oxlint-config",
+		"oxc",
+		"linter",
+		"typescript",
+		"react",
+		"nextjs"
+	],
+	"homepage": "https://github.com/jabworks/style-guide/tree/main/packages/oxlint-config#readme",
+	"bugs": {
+		"url": "https://github.com/jabworks/style-guide/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jabworks/style-guide.git",
+		"directory": "packages/oxlint-config"
+	},
+	"license": "MIT",
+	"author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs",
+			"default": "./dist/index.mjs"
+		}
+	},
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsdown"
+	},
+	"devDependencies": {
+		"@jabworks/typescript-config": "workspace:*",
+		"tsdown": "^0.21.7",
+		"typescript": "^6.0.2"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
