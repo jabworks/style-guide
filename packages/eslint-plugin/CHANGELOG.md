@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 2.0.0
+
+### Major Changes
+
+- [#20](https://github.com/jabworks/style-guide/pull/20) [`2775687`](https://github.com/jabworks/style-guide/commit/27756872257128af32c13363e3a0b17e2fd9f163) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump `eslint` peer dependency from `^9.x` to `^10.2.0`. This is a breaking change for consumers still on ESLint v9. Please upgrade to ESLint 10 before updating to this version of `@jabworks/eslint-plugin`.
+
 ## 1.1.8
 
 ### Patch Changes
