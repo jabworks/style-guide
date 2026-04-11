@@ -14,27 +14,27 @@
     "test": "vitest"
   },
   "dependencies": {
-    "next": "^16.2.2",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "next": "^16.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
     "@jabworks/eslint-plugin": "workspace:*",
     "@jabworks/stylelint-config": "workspace:*",
     "@jabworks/typescript-config": "workspace:*",
-    "@types/node": "^25.5.2",
+    "@types/node": "^25.6.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
-    "@vitest/browser-playwright": "^4.1.2",
-    "@vitest/browser-preview": "^4.1.2",
-    "@vitest/coverage-v8": "4.1.2",
+    "@vitest/browser-playwright": "^4.1.4",
+    "@vitest/browser-preview": "^4.1.4",
+    "@vitest/coverage-v8": "4.1.4",
     "eslint": "^10.2.0",
-    "jsdom": "^29.0.1",
+    "jsdom": "^29.0.2",
     "playwright": "^1.59.1",
     "stylelint": "^17.6.0",
     "typescript": "6.0.2",
-    "vitest": "^4.1.2",
-    "vitest-browser-react": "^2.1.0"
+    "vitest": "^4.1.4",
+    "vitest-browser-react": "^2.2.0"
   }
 }
