@@ -39,8 +39,8 @@
     "stylelint-config-standard": "^40.0.0"
   },
   "devDependencies": {
-    "rolldown": "1.0.0-rc.15",
-    "stylelint": "^17.6.0"
+    "rolldown": "1.0.0-rc.18",
+    "stylelint": "^17.9.1"
   },
   "peerDependencies": {
     "stylelint": "^17.0.0"
