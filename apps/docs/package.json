@@ -12,17 +12,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "^16.2.3",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "next": "^16.2.7",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@jabworks/eslint-plugin": "workspace:*",
     "@jabworks/typescript-config": "workspace:*",
-    "@types/node": "^25.6.0",
-    "@types/react": "19.2.14",
+    "@types/node": "^25.9.2",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
-    "eslint": "^10.2.0",
-    "typescript": "6.0.2"
+    "eslint": "^10.4.1",
+    "typescript": "6.0.3"
   }
 }
