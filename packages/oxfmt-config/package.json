@@ -1,0 +1,51 @@
+{
+  "name": "@jabworks/oxfmt-config",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Opinionated oxfmt formatter configuration, ported from @jabworks/prettier-config",
+  "keywords": [
+    "oxfmt",
+    "oxc",
+    "formatter",
+    "prettier-alternative"
+  ],
+  "homepage": "https://github.com/jabworks/style-guide/tree/main/packages/oxfmt-config#readme",
+  "bugs": {
+    "url": "https://github.com/jabworks/style-guide/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabworks/style-guide.git",
+    "directory": "packages/oxfmt-config"
+  },
+  "license": "MIT",
+  "author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown"
+  },
+  "devDependencies": {
+    "@jabworks/typescript-config": "workspace:*",
+    "oxfmt": "^0.54.0",
+    "tsdown": "^0.21.7",
+    "typescript": "^6.0.2"
+  },
+  "peerDependencies": {
+    "oxfmt": ">=0.54.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
