@@ -1,6 +1,7 @@
 # Style Guide Configurations
 
 [![ESLint Plugin](https://img.shields.io/npm/v/%40jabworks%2Feslint-plugin?style=flat-square&logo=npm&label=%40jabworks%2Feslint-plugin)](https://www.npmjs.com/package/@jabworks/eslint-plugin)
+[![Oxlint Config](https://img.shields.io/npm/v/%40jabworks%2Foxlint-config?style=flat-square&logo=npm&label=%40jabworks%2Foxlint-config)](https://www.npmjs.com/package/@jabworks/oxlint-config)
 [![Prettier Config](https://img.shields.io/npm/v/%40jabworks%2Fprettier-config?style=flat-square&logo=npm&label=%40jabworks%2Fprettier-config)](https://www.npmjs.com/package/@jabworks/prettier-config)
 [![Stylelint Config](https://img.shields.io/npm/v/%40jabworks%2Fstylelint-config?style=flat-square&logo=npm&label=%40jabworks%2Fstylelint-config)](https://www.npmjs.com/package/@jabworks/stylelint-config)
 
@@ -13,6 +14,7 @@ This repository includes the following packages:
 ### Packages
 
 - **`@jabworks/eslint-plugin`**: Comprehensive ESLint plugin with modular flat configs for JavaScript, TypeScript, React, Next.js, and Vitest. Features zero-tolerance for warnings and support for modern development patterns.
+- **`@jabworks/oxlint-config`**: Shareable oxlint presets (base, typescript, react, next, vitest) ported from `@jabworks/eslint-plugin`. Requires `oxlint` ≥1.69.0 and `oxlint-tsgolint` for type-aware rules.
 - **`@jabworks/prettier-config`**: Opinionated Prettier configuration with essential plugins for Tailwind CSS class sorting, JSON formatting, and package.json organization.
 - **`@jabworks/typescript-config`**: Shared TypeScript configurations (`base`, `nextjs`, `react-library`) with strict settings and modern module resolution.
 - **`@jabworks/stylelint-config`**: Shareable Stylelint configuration for modern CSS, PostCSS, and CSS Modules. Tailwind-aware defaults and sensible ordering rules.
@@ -43,6 +45,34 @@ export default [
   ...plugin.configs.next, // or .base, .react, .typescript
 ];
 ```
+
+### Using the Oxlint Config
+
+```bash
+npm install -D oxlint oxlint-tsgolint @jabworks/oxlint-config
+```
+
+Because oxlint configs cannot extend npm packages, consumers must serialize a preset to JSON:
+
+```js
+// scripts/generate-oxlintrc.mjs
+import { writeFileSync } from 'node:fs';
+import { config } from '@jabworks/oxlint-config';
+
+writeFileSync('.oxlintrc.json', JSON.stringify(config.configs.next, null, 2));
+```
+
+```jsonc
+// package.json
+{
+  "scripts": {
+    "lint": "oxlint --type-aware --deny-warnings",
+    "generate:oxlintrc": "node scripts/generate-oxlintrc.mjs"
+  }
+}
+```
+
+Re-run `generate:oxlintrc` whenever you upgrade the config package.
 
 ### Using the Prettier Config
 
