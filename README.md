@@ -1,6 +1,8 @@
 # Style Guide Configurations
 
 [![ESLint Plugin](https://img.shields.io/npm/v/%40jabworks%2Feslint-plugin?style=flat-square&logo=npm&label=%40jabworks%2Feslint-plugin)](https://www.npmjs.com/package/@jabworks/eslint-plugin)
+[![Oxlint Config](https://img.shields.io/npm/v/%40jabworks%2Foxlint-config?style=flat-square&logo=npm&label=%40jabworks%2Foxlint-config)](https://www.npmjs.com/package/@jabworks/oxlint-config)
+[![Oxfmt Config](https://img.shields.io/npm/v/%40jabworks%2Foxfmt-config?style=flat-square&logo=npm&label=%40jabworks%2Foxfmt-config)](https://www.npmjs.com/package/@jabworks/oxfmt-config)
 [![Prettier Config](https://img.shields.io/npm/v/%40jabworks%2Fprettier-config?style=flat-square&logo=npm&label=%40jabworks%2Fprettier-config)](https://www.npmjs.com/package/@jabworks/prettier-config)
 [![Stylelint Config](https://img.shields.io/npm/v/%40jabworks%2Fstylelint-config?style=flat-square&logo=npm&label=%40jabworks%2Fstylelint-config)](https://www.npmjs.com/package/@jabworks/stylelint-config)
 
@@ -13,6 +15,8 @@ This repository includes the following packages:
 ### Packages
 
 - **`@jabworks/eslint-plugin`**: Comprehensive ESLint plugin with modular flat configs for JavaScript, TypeScript, React, Next.js, and Vitest. Features zero-tolerance for warnings and support for modern development patterns.
+- **`@jabworks/oxlint-config`**: Shareable oxlint presets (base, typescript, react, next, vitest) ported from `@jabworks/eslint-plugin`. Requires `oxlint` ≥1.69.0 and `oxlint-tsgolint` for type-aware rules.
+- **`@jabworks/oxfmt-config`**: Opinionated oxfmt formatter configuration ported from `@jabworks/prettier-config`. Includes built-in Tailwind CSS class sorting and package.json ordering.
 - **`@jabworks/prettier-config`**: Opinionated Prettier configuration with essential plugins for Tailwind CSS class sorting, JSON formatting, and package.json organization.
 - **`@jabworks/typescript-config`**: Shared TypeScript configurations (`base`, `nextjs`, `react-library`) with strict settings and modern module resolution.
 - **`@jabworks/stylelint-config`**: Shareable Stylelint configuration for modern CSS, PostCSS, and CSS Modules. Tailwind-aware defaults and sensible ordering rules.
@@ -43,6 +47,47 @@ export default [
   ...plugin.configs.next, // or .base, .react, .typescript
 ];
 ```
+
+### Using the Oxlint Config
+
+```bash
+npm install -D oxlint oxlint-tsgolint @jabworks/oxlint-config
+```
+
+```ts
+// oxlint.config.ts
+import { next } from '@jabworks/oxlint-config';
+import { defineConfig } from 'oxlint';
+
+export default defineConfig({
+  extends: [next],
+});
+```
+
+```jsonc
+// package.json
+{
+  "scripts": {
+    "lint": "oxlint --type-aware --deny-warnings"
+  }
+}
+```
+
+> **Note:** `oxlint.config.ts` requires Node.js v22.18+ or v24+. Available presets: `base`, `typescript`, `react`, `next`, `vitest`.
+
+### Using the Oxfmt Config
+
+```bash
+npm install -D oxfmt @jabworks/oxfmt-config
+```
+
+```ts
+// oxfmt.config.ts
+import { config } from '@jabworks/oxfmt-config';
+export default config;
+```
+
+> **Note:** `oxfmt.config.ts` requires Node.js v22.18+ or v24+. Spread and override `config` via `defineConfig({ ...config, ... })` if you need per-project tweaks.
 
 ### Using the Prettier Config
 

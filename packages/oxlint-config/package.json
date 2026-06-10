@@ -1,0 +1,52 @@
+{
+  "name": "@jabworks/oxlint-config",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Opinionated oxlint presets for JS, TS, React, Next.js, and Vitest, ported from @jabworks/eslint-plugin",
+  "keywords": [
+    "oxlint",
+    "oxlint-config",
+    "oxc",
+    "linter",
+    "typescript"
+  ],
+  "homepage": "https://github.com/jabworks/style-guide/tree/main/packages/oxlint-config#readme",
+  "bugs": {
+    "url": "https://github.com/jabworks/style-guide/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabworks/style-guide.git",
+    "directory": "packages/oxlint-config"
+  },
+  "license": "MIT",
+  "author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown"
+  },
+  "devDependencies": {
+    "@jabworks/typescript-config": "workspace:*",
+    "oxlint": "^1.69.0",
+    "tsdown": "^0.21.7",
+    "typescript": "^6.0.2"
+  },
+  "peerDependencies": {
+    "oxlint": ">=1.69.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
