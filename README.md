@@ -52,27 +52,26 @@ export default [
 npm install -D oxlint oxlint-tsgolint @jabworks/oxlint-config
 ```
 
-Because oxlint configs cannot extend npm packages, consumers must serialize a preset to JSON:
+```ts
+// oxlint.config.ts
+import { next } from '@jabworks/oxlint-config';
+import { defineConfig } from 'oxlint';
 
-```js
-// scripts/generate-oxlintrc.mjs
-import { writeFileSync } from 'node:fs';
-import { config } from '@jabworks/oxlint-config';
-
-writeFileSync('.oxlintrc.json', JSON.stringify(config.configs.next, null, 2));
+export default defineConfig({
+  extends: [next],
+});
 ```
 
 ```jsonc
 // package.json
 {
   "scripts": {
-    "lint": "oxlint --type-aware --deny-warnings",
-    "generate:oxlintrc": "node scripts/generate-oxlintrc.mjs"
+    "lint": "oxlint --type-aware --deny-warnings"
   }
 }
 ```
 
-Re-run `generate:oxlintrc` whenever you upgrade the config package.
+> **Note:** `oxlint.config.ts` requires Node.js v22.18+ or v24+. Available presets: `base`, `typescript`, `react`, `next`, `vitest`.
 
 ### Using the Prettier Config
 

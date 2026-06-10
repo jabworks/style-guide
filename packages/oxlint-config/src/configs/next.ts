@@ -12,6 +12,9 @@ const next: OxlintConfig = mergeConfigs(react, {
   overrides: [
     {
       files: [
+        '*.config.js',
+        '*.config.mjs',
+        '*.config.cjs',
         '*.config.ts',
         '**/*.d.ts',
         '**/*.stories.ts',
