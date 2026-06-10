@@ -1,5 +1,11 @@
 # @jabworks/oxlint-config
 
+## 0.1.1
+
+### Patch Changes
+
+- [#35](https://github.com/jabworks/style-guide/pull/35) [`2c04065`](https://github.com/jabworks/style-guide/commit/2c04065cf978940c5ba103b3e4b21a2c8762456f) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Update README with oxlint.config.ts usage
+
 ## 0.1.0
 
 ### Minor Changes
