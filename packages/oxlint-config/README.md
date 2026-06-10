@@ -1,6 +1,6 @@
 # @jabworks/oxlint-config
 
-Opinionated [oxlint](https://oxc.rs/docs/guide/usage/linter/) presets ported from [`@jabworks/eslint-plugin`](../eslint-plugin). Each preset is a complete, JSON-serializable `.oxlintrc` object.
+Opinionated [oxlint](https://oxc.rs/docs/guide/usage/linter/) presets ported from [`@jabworks/eslint-plugin`](../eslint-plugin).
 
 ## Presets
 
@@ -10,28 +10,47 @@ Opinionated [oxlint](https://oxc.rs/docs/guide/usage/linter/) presets ported fro
 - `next` — react + nextjs plugin, default-export overrides for Next.js special files, ignores `.next/`
 - `vitest` — standalone test-file override preset
 
-## Usage
-
-`.oxlintrc.json` cannot extend an npm package, so serialize a preset:
-
-```js
-// scripts/generate-oxlintrc.mjs
-import { config } from '@jabworks/oxlint-config';
-import { writeFileSync } from 'node:fs';
-
-writeFileSync(
-  '.oxlintrc.json',
-  JSON.stringify({ $schema: './node_modules/oxlint/configuration_schema.json', ...config.configs.next }, null, 2),
-);
-```
-
-Then lint with:
+## Installation
 
 ```bash
-oxlint --type-aware --deny-warnings
+npm install -D oxlint oxlint-tsgolint @jabworks/oxlint-config
 ```
 
-You can also compose presets with the exported `mergeConfigs` helper.
+## Usage
+
+```ts
+// oxlint.config.ts
+import { next } from '@jabworks/oxlint-config';
+import { defineConfig } from 'oxlint';
+
+export default defineConfig({
+  extends: [next],
+});
+```
+
+```jsonc
+// package.json
+{
+  "scripts": {
+    "lint": "oxlint --type-aware --deny-warnings"
+  }
+}
+```
+
+> **Note:** `oxlint.config.ts` requires Node.js v22.18+ or v24+.
+
+To compose or override, use the exported `mergeConfigs` helper:
+
+```ts
+import { mergeConfigs, typescript } from '@jabworks/oxlint-config';
+import { defineConfig } from 'oxlint';
+
+const custom = mergeConfigs(typescript, {
+  rules: { 'no-console': 'warn' },
+});
+
+export default defineConfig({ extends: [custom] });
+```
 
 ## Type-aware rules
 
@@ -39,7 +58,7 @@ The typescript preset enables type-aware rules (`typescript/no-misused-promises`
 
 ## Rules not ported from @jabworks/eslint-plugin
 
-Unsupported by oxlint 1.58 (verified with `oxlint --rules` and `@oxlint/migrate --details`):
+Unsupported by oxlint 1.69 (verified with `oxlint --rules` and `@oxlint/migrate --details`):
 
 - Core: `no-floating-decimal`, `no-implied-eval`, `no-octal-escape`, `prefer-regex-literals`, `object-shorthand`, `no-unreachable-loop`, `camelcase`, `prefer-arrow-callback`, `no-undef-init`
 - Import: `newline-after-import`, `no-extraneous-dependencies`, `no-relative-packages`, `no-useless-path-segments`, `no-deprecated`
