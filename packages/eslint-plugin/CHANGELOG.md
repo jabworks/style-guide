@@ -1,5 +1,14 @@
 # @jabworks/eslint-plugin
 
+## 2.1.0
+
+### Minor Changes
+
+- [#38](https://github.com/jabworks/style-guide/pull/38) [`cf25f70`](https://github.com/jabworks/style-guide/commit/cf25f70db744c3dbce982a94754a18c4bbc81085) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Add `node` and `library` ESLint configs.
+
+  - `node` — extends `base` + `typescript`, sets `globals.node`, enables `eslint-plugin-n` with rules for `no-process-exit`, `prefer-promises/fs`, `prefer-promises/dns`, `no-path-concat`, `no-callback-literal`, `handle-callback-err`, and `prefer-global/*`
+  - `library` — extends `base` + `typescript`, no environment globals, enforces `import/no-default-export` and enables `import/no-cycle` (disabled in base for performance)
+
 ## 2.0.0
 
 ### Major Changes
