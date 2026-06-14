@@ -38,13 +38,13 @@
   "dependencies": {
     "prettier-plugin-packagejson": "^3.0.2",
     "prettier-plugin-sort-json": "^4.2.0",
-    "prettier-plugin-tailwindcss": "^0.7.2"
+    "prettier-plugin-tailwindcss": "^0.8.0"
   },
   "devDependencies": {
     "@jabworks/typescript-config": "workspace:*",
     "prettier": "^3.8.2",
-    "tsdown": "^0.21.7",
-    "typescript": "^6.0.2"
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "prettier": "^3.8.2"
