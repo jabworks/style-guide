@@ -1,6 +1,6 @@
 {
   "name": "@jabworks/oxlint-config",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": false,
   "description": "Opinionated oxlint presets for JS, TS, React, Next.js, and Vitest, ported from @jabworks/eslint-plugin",
   "keywords": [
