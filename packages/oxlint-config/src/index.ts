@@ -1,5 +1,7 @@
 import base from './configs/base.js';
+import library from './configs/library.js';
 import next from './configs/next.js';
+import node from './configs/node.js';
 import react from './configs/react.js';
 import typescript from './configs/typescript.js';
 import vitest from './configs/vitest.js';
@@ -13,8 +15,10 @@ export const config = {
     typescript,
     react,
     next,
+    node,
+    library,
     vitest,
   },
 };
 
-export { base, next, react, typescript, vitest };
+export { base, library, next, node, react, typescript, vitest };
