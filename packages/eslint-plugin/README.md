@@ -2,11 +2,11 @@
 
 [![NPM Version](https://img.shields.io/npm/v/%40jabworks%2Feslint-plugin?style=flat-square&logo=npm)](https://www.npmjs.com/package/@jabworks/eslint-plugin)
 
-A custom ESLint plugin and shareable config for JavaScript, TypeScript, React, and Next.js projects. This package provides a set of curated rules and configurations to help enforce code quality, consistency, and best practices across your codebase.
+A custom ESLint plugin and shareable config for JavaScript, TypeScript, React, Next.js, Node.js, and library projects. This package provides a set of curated rules and configurations to help enforce code quality, consistency, and best practices across your codebase.
 
 ## Features
 
-- **Comprehensive rule sets** for JavaScript, TypeScript, React, and Next.js
+- **Comprehensive rule sets** for JavaScript, TypeScript, React, Next.js, Node.js, and framework-agnostic libraries
 - **Opinionated import sorting** with `simple-import-sort`
 - **Best practices** and stylistic rules
 - **Prettier integration** for code formatting
@@ -33,9 +33,11 @@ import { plugin as jabworksPlugin } from '@jabworks/eslint-plugin';
 
 export default [
 	...jabworksPlugin.configs.base,
-	// or for React/Next.js/TypeScript/Vitest:
+	// or pick the config that matches your project:
 	// ...jabworksPlugin.configs.react,
 	// ...jabworksPlugin.configs.next,
+	// ...jabworksPlugin.configs.node,
+	// ...jabworksPlugin.configs.library,
 	// ...jabworksPlugin.configs.typescript,
 	// ...jabworksPlugin.configs.vitest,
 ];
@@ -45,12 +47,43 @@ Legacy `.eslintrc` configs are not provided. Use flat config with ESLint v9+.
 
 ## Available Configs
 
-- `base` – General JavaScript/TypeScript rules
-- `comments` – Rules for ESLint directive comments
-- `react` – React-specific rules
-- `next` – Next.js-specific rules
-- `typescript` – TypeScript-specific rules
-- `vitest` – Vitest-specific rules
+| Config | Extends | Use for |
+|---|---|---|
+| `base` | — | Any JS/TS project |
+| `comments` | — | ESLint directive comments |
+| `typescript` | `base` | TypeScript-only additions |
+| `react` | `base` + `typescript` | React libraries and apps |
+| `next` | `base` + `typescript` + `react` | Next.js applications |
+| `node` | `base` + `typescript` | Node.js backends and APIs |
+| `library` | `base` + `typescript` | Framework-agnostic utility libraries |
+| `vitest` | — | Vitest test files (composable overlay) |
+
+### `node`
+
+Sets `globals.node`, enables [`eslint-plugin-n`](https://github.com/eslint-community/eslint-plugin-n), and enforces Node.js best practices:
+
+- `n/no-process-exit` — use `process.exitCode` instead
+- `n/prefer-promises/fs` and `n/prefer-promises/dns` — prefer `fs.promises` over callbacks
+- `n/no-path-concat`, `n/no-callback-literal`, `n/handle-callback-err`
+
+```js
+// eslint.config.mjs
+import { plugin } from '@jabworks/eslint-plugin';
+export default plugin.configs.node;
+```
+
+### `library`
+
+No environment globals (environment-agnostic). Enforces named exports and cycle-free module graphs suitable for tree-shakeable packages like utility libraries.
+
+- `import/no-default-export` — named exports only
+- `import/no-cycle` — error (enabled; disabled in `base` for performance)
+
+```js
+// eslint.config.mjs
+import { plugin } from '@jabworks/eslint-plugin';
+export default plugin.configs.library;
+```
 
 ## Example: Import Sorting
 
