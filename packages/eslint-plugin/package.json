@@ -1,6 +1,6 @@
 {
   "name": "@jabworks/eslint-plugin",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "private": false,
   "description": "Opinionated ESLint plugin and flat config for JS, TS, React, and Next.js",
   "keywords": [
