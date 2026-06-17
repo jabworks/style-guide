@@ -1,5 +1,11 @@
 # @jabworks/eslint-plugin
 
+## 2.1.1
+
+### Patch Changes
+
+- [#40](https://github.com/jabworks/style-guide/pull/40) [`70e0d8d`](https://github.com/jabworks/style-guide/commit/70e0d8d83bc6117928fb2cb3506806428c9b16d5) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Add `node` and `library` to the TypeScript type declaration for `plugin.configs`.
+
 ## 2.1.0
 
 ### Minor Changes
