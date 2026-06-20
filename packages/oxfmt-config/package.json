@@ -38,8 +38,8 @@
   },
   "devDependencies": {
     "@jabworks/typescript-config": "workspace:*",
-    "oxfmt": "^0.54.0",
-    "tsdown": "^0.22.2",
+    "oxfmt": "^0.55.0",
+    "tsdown": "^0.22.3",
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
