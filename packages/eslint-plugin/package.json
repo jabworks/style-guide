@@ -37,31 +37,31 @@
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.2",
     "@eslint/js": "^10.0.1",
-    "@next/eslint-plugin-next": "^16.2.3",
+    "@next/eslint-plugin-next": "^16.2.10",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/eslint-plugin": "^8.58.1",
-    "@typescript-eslint/parser": "^8.58.1",
-    "@vitest/eslint-plugin": "^1.6.15",
-    "eslint": "^10.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.63.0",
+    "@typescript-eslint/parser": "^8.63.0",
+    "@vitest/eslint-plugin": "^1.6.22",
+    "eslint": "^10.6.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-n": "^18.1.0",
+    "eslint-plugin-n": "^18.2.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-simple-import-sort": "^13.0.0",
-    "eslint-plugin-unicorn": "^66.0.0",
-    "globals": "^17.6.0",
-    "typescript-eslint": "^8.58.1"
+    "eslint-plugin-unicorn": "^71.1.0",
+    "globals": "^17.7.0",
+    "typescript-eslint": "^8.63.0"
   },
   "devDependencies": {
     "@jabworks/typescript-config": "workspace:*",
-    "@types/node": "^25.9.3",
-    "typescript": "^6.0.3"
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2"
   },
   "peerDependencies": {
-    "eslint": "^10.5.0",
+    "eslint": "^10.6.0",
     "typescript-eslint": "^8.54.0"
   }
 }
