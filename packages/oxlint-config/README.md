@@ -67,7 +67,7 @@ The typescript preset enables type-aware rules (`typescript/no-misused-promises`
 
 Sets `env.node: true` and enables the built-in `node` plugin with Node.js best practices:
 
-- `node/no-process-exit` — use `process.exitCode` instead of `process.exit()`
+- `unicorn/no-process-exit` — use `process.exitCode` instead of `process.exit()` (registered under oxlint's `unicorn` plugin)
 - `node/no-path-concat` — use `path.join()` or `path.resolve()` over string concatenation
 - `node/no-new-require` — disallow `new require(…)`
 - `node/no-exports-assign` — disallow reassigning `exports`
