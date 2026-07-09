@@ -1,5 +1,7 @@
 # Style Guide Configurations
 
+[![CI](https://img.shields.io/github/actions/workflow/status/jabworks/style-guide/ci.yml?branch=main&style=flat-square&logo=github&label=CI)](https://github.com/jabworks/style-guide/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/actions/workflow/status/jabworks/style-guide/release.yml?branch=main&style=flat-square&logo=github&label=Release)](https://github.com/jabworks/style-guide/actions/workflows/release.yml)
 [![ESLint Plugin](https://img.shields.io/npm/v/%40jabworks%2Feslint-plugin?style=flat-square&logo=npm&label=%40jabworks%2Feslint-plugin)](https://www.npmjs.com/package/@jabworks/eslint-plugin)
 [![Oxlint Config](https://img.shields.io/npm/v/%40jabworks%2Foxlint-config?style=flat-square&logo=npm&label=%40jabworks%2Foxlint-config)](https://www.npmjs.com/package/@jabworks/oxlint-config)
 [![Oxfmt Config](https://img.shields.io/npm/v/%40jabworks%2Foxfmt-config?style=flat-square&logo=npm&label=%40jabworks%2Foxfmt-config)](https://www.npmjs.com/package/@jabworks/oxfmt-config)
