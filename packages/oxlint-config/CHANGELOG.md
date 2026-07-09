@@ -1,5 +1,11 @@
 # @jabworks/oxlint-config
 
+## 0.3.1
+
+### Patch Changes
+
+- [#47](https://github.com/jabworks/style-guide/pull/47) [`e84734b`](https://github.com/jabworks/style-guide/commit/e84734bc2812074d9ddab7570dc9ed6534e58d4c) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Fix the `node` preset failing to parse: `no-process-exit` is registered under oxlint's `unicorn` plugin, not `node` — the preset previously made any consuming config error with "Rule 'no-process-exit' not found in plugin 'node'".
+
 ## 0.3.0
 
 ### Minor Changes
