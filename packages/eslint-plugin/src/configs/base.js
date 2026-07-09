@@ -5,6 +5,7 @@ import importPlugin from 'eslint-plugin-import-x';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unicorn from 'eslint-plugin-unicorn';
 import tseslint from 'typescript-eslint';
+
 import bestPractice from '../rules/best-practice.js';
 import es6 from '../rules/es6.js';
 import importConfig from '../rules/import.js';

@@ -23,7 +23,10 @@ This repository includes the following packages:
 
 ### Apps
 
-- **`apps/web/`**: Next.js integration app — exercises the ESLint, oxlint (type-aware), and Stylelint configs plus Vitest browser testing
+- **`apps/web-eslint/`**: Next.js integration app for the ESLint toolchain — exercises `@jabworks/eslint-plugin`, `@jabworks/prettier-config`, and `@jabworks/stylelint-config`, plus Vitest browser testing
+- **`apps/web-oxc/`**: Next.js integration app for the oxc toolchain — exercises `@jabworks/oxlint-config` (type-aware) and `@jabworks/oxfmt-config`
+
+The monorepo itself lints and formats with the oxc toolchain (`oxlint` over `packages/`, `oxfmt` repo-wide), dogfooding its own configs.
 
 All packages are built with modern tooling and 100% [TypeScript](https://www.typescriptlang.org/) support.
 

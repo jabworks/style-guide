@@ -8,9 +8,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 pnpm install          # Install all dependencies
 pnpm build            # Build all packages (Turborepo-orchestrated)
 pnpm build:packages   # Build only packages (not apps)
-pnpm lint             # Lint all packages
+pnpm lint             # Lint apps (turbo; web-eslint runs eslint+stylelint, web-oxc runs oxlint)
+pnpm lint:packages    # Lint package sources with oxlint (root oxlint.config.ts)
 pnpm check-types      # Type-check all packages
-pnpm format           # Format with Prettier
+pnpm format           # Format: oxfmt repo-wide + turbo format (web-eslint uses prettier)
 pnpm dev              # Start all apps in watch mode
 pnpm release          # Publish via Changesets (after versioning)
 ```

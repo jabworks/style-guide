@@ -12,13 +12,18 @@
   "bugs": {
     "url": "https://github.com/jabworks/style-guide/issues"
   },
+  "license": "MIT",
+  "author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jabworks/style-guide.git",
     "directory": "packages/prettier-config"
   },
-  "license": "MIT",
-  "author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -27,11 +32,9 @@
       "default": "./dist/index.mjs"
     }
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "files": [
-    "dist"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown"
   },
@@ -48,8 +51,5 @@
   },
   "peerDependencies": {
     "prettier": "^3.8.2"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

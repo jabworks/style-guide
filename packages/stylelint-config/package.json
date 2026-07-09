@@ -11,14 +11,18 @@
   "bugs": {
     "url": "https://github.com/jabworks/style-guide/issues"
   },
+  "license": "MIT",
+  "author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jabworks/style-guide.git",
     "directory": "packages/stylelint-config"
   },
-  "license": "MIT",
-  "author": "Vi Minh Hiếu <jabworks@hieuvi.dev> (https://hieuvi.dev)",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "main": "dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -26,10 +30,9 @@
       "default": "./dist/index.js"
     }
   },
-  "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rolldown -c"
   },
@@ -44,8 +47,5 @@
   },
   "peerDependencies": {
     "stylelint": "^17.0.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
