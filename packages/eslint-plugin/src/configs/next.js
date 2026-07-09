@@ -6,8 +6,8 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
-import jsxA11yRules from '../rules/jsx-a11y.js';
 
+import jsxA11yRules from '../rules/jsx-a11y.js';
 import reactRules from '../rules/react.js';
 import baseConfig from './base.js';
 import tseslintConfigs, { tseslintConfig } from './typescript.js';

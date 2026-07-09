@@ -22,8 +22,9 @@ export const mergeConfigs = (...configs: OxlintConfig[]): OxlintConfig => {
 
     if (config.overrides) result.overrides = [...(result.overrides ?? []), ...config.overrides];
 
-    if (config.ignorePatterns)
+    if (config.ignorePatterns) {
       result.ignorePatterns = [...new Set([...(result.ignorePatterns ?? []), ...config.ignorePatterns])];
+    }
   }
 
   return result;

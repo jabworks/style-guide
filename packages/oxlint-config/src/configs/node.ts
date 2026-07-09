@@ -10,12 +10,13 @@ import { vitestOverride } from './vitest.js';
  * n/prefer-promises/dns, n/no-callback-literal, n/prefer-global/*.
  */
 export const nodeRules: OxlintConfig = {
-  plugins: ['node'],
+  plugins: ['node', 'unicorn'],
   env: {
     node: true,
   },
   rules: {
-    'node/no-process-exit': 'error',
+    // Registered under the unicorn plugin in oxlint (not node/).
+    'unicorn/no-process-exit': 'error',
     'node/no-path-concat': 'error',
     'node/no-new-require': 'error',
     'node/no-exports-assign': 'error',

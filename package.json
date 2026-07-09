@@ -1,27 +1,31 @@
 {
   "name": "@jabworks/style-guide",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "build:packages": "turbo run build --filter \"./packages/**\"",
     "check-types": "turbo run check-types",
     "dev": "turbo run dev",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "oxfmt && turbo run format",
+    "format:check": "oxfmt --check && turbo run format:check",
     "lint": "turbo run lint",
+    "lint:packages": "oxlint packages",
     "release": "changeset publish",
     "test": "turbo run test"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^2.31.0",
-    "@jabworks/prettier-config": "workspace:*",
-    "prettier": "^3.8.2",
+    "@jabworks/oxfmt-config": "workspace:*",
+    "@jabworks/oxlint-config": "workspace:*",
+    "oxfmt": "^0.58.0",
+    "oxlint": "^1.73.0",
     "turbo": "^2.9.18",
     "typescript": "6.0.3"
   },
-  "packageManager": "pnpm@10.29.3+sha512.498e1fb4cca5aa06c1dcf2611e6fafc50972ffe7189998c409e90de74566444298ffe43e6cd2acdc775ba1aa7cc5e092a8b7054c811ba8c5770f84693d33d2dc",
   "engines": {
     "node": ">=24"
-  }
+  },
+  "packageManager": "pnpm@10.29.3+sha512.498e1fb4cca5aa06c1dcf2611e6fafc50972ffe7189998c409e90de74566444298ffe43e6cd2acdc775ba1aa7cc5e092a8b7054c811ba8c5770f84693d33d2dc"
 }
