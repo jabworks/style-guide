@@ -1,6 +1,6 @@
-import { defineConfig, type FormatOptions } from 'oxfmt';
+import { defineConfig, type FormatConfig } from 'oxfmt';
 
-export const config: FormatOptions = defineConfig({
+export const config: FormatConfig = defineConfig({
   arrowParens: 'avoid',
   bracketSameLine: false,
   bracketSpacing: true,
@@ -14,6 +14,9 @@ export const config: FormatOptions = defineConfig({
   tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,
+  // Sort order differs from eslint-plugin's simple-import-sort custom groups;
+  // in the oxlint+oxfmt toolchain this is the only import sorting available.
+  sortImports: true,
   sortPackageJson: true,
   sortTailwindcss: true,
 });

@@ -3,8 +3,8 @@ import commentsRules from '../rules/comments.js';
 
 /** @type {import('eslint').Linter.Config} */
 export const commentsConfig = {
-	name: '@jabworks/eslint-config-comments',
-	rules: commentsRules,
+  name: '@jabworks/eslint-config-comments',
+  rules: commentsRules,
 };
 
 /** @type {import('eslint').Linter.Config[]} */

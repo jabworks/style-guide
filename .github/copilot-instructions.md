@@ -73,11 +73,11 @@ The main package follows a **modular flat config pattern**:
 import { plugin } from '@jabworks/eslint-plugin';
 
 export default [
-	{
-		plugins: { '@jabworks/eslint-plugin': plugin },
-	},
-	...plugin.configs.next, // Includes base + typescript + react + next
-	...plugin.configs.vitest, // For test files
+  {
+    plugins: { '@jabworks/eslint-plugin': plugin },
+  },
+  ...plugin.configs.next, // Includes base + typescript + react + next
+  ...plugin.configs.vitest, // For test files
 ];
 ```
 

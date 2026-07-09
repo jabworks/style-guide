@@ -61,7 +61,7 @@ Add to your `package.json`:
 
 ```json
 {
-	"prettier": "@jabworks/prettier-config"
+  "prettier": "@jabworks/prettier-config"
 }
 ```
 
@@ -75,10 +75,10 @@ Extend the base configuration with your own rules:
 import { config } from '@jabworks/prettier-config';
 
 export default {
-	...config,
-	// Your custom overrides
-	printWidth: 100,
-	semi: false,
+  ...config,
+  // Your custom overrides
+  printWidth: 100,
+  semi: false,
 };
 ```
 
@@ -126,14 +126,14 @@ This configuration includes the following settings:
 ```javascript
 // Before
 const example = { c: 1, a: 2, b: 3, longKey: 4 };
-function test( a,  b, c ) {
-	return a + b + c;
+function test(a, b, c) {
+  return a + b + c;
 }
 
 // After
 const example = { c: 1, a: 2, b: 3, longKey: 4 };
 function test(a, b, c) {
-	return a + b + c;
+  return a + b + c;
 }
 ```
 
@@ -180,17 +180,17 @@ function test(a, b, c) {
 
 ```json
 {
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
 ```
 
@@ -200,10 +200,10 @@ Add these scripts to your `package.json`:
 
 ```json
 {
-	"scripts": {
-		"format": "prettier --write .",
-		"format:check": "prettier --check ."
-	}
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  }
 }
 ```
 

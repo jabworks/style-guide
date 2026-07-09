@@ -1,20 +1,20 @@
 {
-	"compilerOptions": {
-		"plugins": [
-			{
-				"name": "next"
-			}
-		]
-	},
-	"exclude": ["node_modules"],
-	"extends": "@jabworks/typescript-config/nextjs.json",
-	"include": [
-		"**/*.ts",
-		"**/*.tsx",
-		"next-env.d.ts",
-		"next.config.js",
-		".next/types/**/*.ts",
-		"vitest.config.ts",
-		"vitest.setup.ts"
-	]
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "exclude": ["node_modules"],
+  "extends": "@jabworks/typescript-config/nextjs.json",
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    "next.config.js",
+    ".next/types/**/*.ts",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ]
 }

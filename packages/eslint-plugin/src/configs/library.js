@@ -1,19 +1,19 @@
 import eslintConfigPrettier from 'eslint-config-prettier';
-import importPlugin from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import-x';
 
 import baseConfig from './base.js';
 import tseslintConfig from './typescript.js';
 
 /** @type {import('eslint').Linter.Config} */
 export const libraryConfig = {
-	name: '@jabworks/eslint-config-library',
-	// No environment globals — libraries should be environment-agnostic
-	rules: {
-		// Prevent circular dependencies which break tree-shaking
-		'import/no-cycle': 'error',
-		// Named exports keep tree-shaking effective
-		'import/no-default-export': 'error',
-	},
+  name: '@jabworks/eslint-config-library',
+  // No environment globals — libraries should be environment-agnostic
+  rules: {
+    // Prevent circular dependencies which break tree-shaking
+    'import-x/no-cycle': 'error',
+    // Named exports keep tree-shaking effective
+    'import-x/no-default-export': 'error',
+  },
 };
 
 /**
@@ -22,11 +22,11 @@ export const libraryConfig = {
  * @type {import('eslint').Linter.Config[]}
  */
 const configs = [
-	eslintConfigPrettier,
-	importPlugin.flatConfigs.recommended,
-	...baseConfig,
-	...tseslintConfig,
-	libraryConfig,
+  eslintConfigPrettier,
+  importPlugin.flatConfigs.recommended,
+  ...baseConfig,
+  ...tseslintConfig,
+  libraryConfig,
 ];
 
 export default configs;

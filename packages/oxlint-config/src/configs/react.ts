@@ -8,7 +8,7 @@ import { vitestOverride } from './vitest.js';
  * Includes the react-hooks rules (folded into oxlint's react plugin) and the
  * vitest override for test files.
  *
- * Dropped (no oxlint equivalent as of 1.58): function-component-definition,
+ * Dropped (no oxlint equivalent as of 1.73): function-component-definition,
  * hook-use-state, jsx-no-leaked-render, jsx-sort-props,
  * no-unstable-nested-components.
  */

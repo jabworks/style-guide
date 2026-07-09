@@ -15,16 +15,15 @@ This repository includes the following packages:
 ### Packages
 
 - **`@jabworks/eslint-plugin`**: Comprehensive ESLint plugin with modular flat configs for JavaScript, TypeScript, React, Next.js, and Vitest. Features zero-tolerance for warnings and support for modern development patterns.
-- **`@jabworks/oxlint-config`**: Shareable oxlint presets (base, typescript, react, next, vitest) ported from `@jabworks/eslint-plugin`. Requires `oxlint` ≥1.69.0 and `oxlint-tsgolint` for type-aware rules.
+- **`@jabworks/oxlint-config`**: Shareable oxlint presets (base, typescript, react, next, node, library, vitest) ported from `@jabworks/eslint-plugin`. Requires `oxlint` ≥1.73.0 and `oxlint-tsgolint` for type-aware rules.
 - **`@jabworks/oxfmt-config`**: Opinionated oxfmt formatter configuration ported from `@jabworks/prettier-config`. Includes built-in Tailwind CSS class sorting and package.json ordering.
 - **`@jabworks/prettier-config`**: Opinionated Prettier configuration with essential plugins for Tailwind CSS class sorting, JSON formatting, and package.json organization.
-- **`@jabworks/typescript-config`**: Shared TypeScript configurations (`base`, `nextjs`, `react-library`) with strict settings and modern module resolution.
+- **`@jabworks/typescript-config`**: Shared TypeScript configurations (`base`, `nextjs`, `react-library`) with strict settings and modern module resolution. Internal to this monorepo (not published).
 - **`@jabworks/stylelint-config`**: Shareable Stylelint configuration for modern CSS, PostCSS, and CSS Modules. Tailwind-aware defaults and sensible ordering rules.
 
 ### Apps
 
-- **`apps/web/`**: Next.js demo application showcasing all configurations with Vitest browser testing setup
-- **`apps/docs/`**: Documentation site for the style guide packages
+- **`apps/web/`**: Next.js integration app — exercises the ESLint, oxlint (type-aware), and Stylelint configs plus Vitest browser testing
 
 All packages are built with modern tooling and 100% [TypeScript](https://www.typescriptlang.org/) support.
 
@@ -68,8 +67,8 @@ export default defineConfig({
 // package.json
 {
   "scripts": {
-    "lint": "oxlint --type-aware --deny-warnings"
-  }
+    "lint": "oxlint --type-aware --deny-warnings",
+  },
 }
 ```
 

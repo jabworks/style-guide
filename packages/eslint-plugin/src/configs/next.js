@@ -1,7 +1,8 @@
 import js from '@eslint/js';
 import pluginNext from '@next/eslint-plugin-next';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import importPlugin from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import-x';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
@@ -13,12 +14,15 @@ import tseslintConfigs, { tseslintConfig } from './typescript.js';
 
 /** @type {import('eslint').Linter.Config[]} */
 const configs = [
-  ...baseConfig,
   js.configs.recommended,
   eslintConfigPrettier,
   importPlugin.flatConfigs.recommended,
+  // Base comes after the shared presets so its rule options win over the
+  // presets' plain severities (e.g. no-unused-vars ignore patterns).
+  ...baseConfig,
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat['jsx-runtime'],
+  jsxA11y.flatConfigs.recommended,
   ...tseslintConfigs,
   {
     name: '@jabworks/eslint-config-nextjs',
@@ -38,8 +42,10 @@ const configs = [
       },
     },
     settings: {
-      'import/resolver': { node: {} },
-      react: { version: 'detect' },
+      'import-x/resolver': { node: {} },
+      // 'detect' crashes under ESLint 10 (eslint-plugin-react 7.37 still calls
+      // the removed context.getFilename). Override via settings for older React.
+      react: { version: '19' },
     },
     linterOptions: {
       reportUnusedDisableDirectives: true,
@@ -78,8 +84,8 @@ const configs = [
       'src/app/sitemap.ts',
     ],
     rules: {
-      'import/no-default-export': 'off',
-      'import/prefer-default-export': ['error', { target: 'any' }],
+      'import-x/no-default-export': 'off',
+      'import-x/prefer-default-export': ['error', { target: 'any' }],
     },
   },
   {

@@ -1,5 +1,5 @@
 import eslintConfigPrettier from 'eslint-config-prettier';
-import importPlugin from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import-x';
 import pluginN from 'eslint-plugin-n';
 import globals from 'globals';
 
@@ -9,22 +9,22 @@ import tseslintConfig from './typescript.js';
 
 /** @type {import('eslint').Linter.Config} */
 export const nodeConfig = {
-	name: '@jabworks/eslint-config-node',
-	languageOptions: {
-		globals: {
-			...globals.node,
-		},
-		parserOptions: {
-			projectService: true,
-			tsconfigRootDir: import.meta.dirname,
-		},
-	},
-	plugins: {
-		n: pluginN,
-	},
-	rules: {
-		...nodeRules,
-	},
+  name: '@jabworks/eslint-config-node',
+  languageOptions: {
+    globals: {
+      ...globals.node,
+    },
+    parserOptions: {
+      projectService: true,
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+  plugins: {
+    n: pluginN,
+  },
+  rules: {
+    ...nodeRules,
+  },
 };
 
 /**
@@ -33,12 +33,12 @@ export const nodeConfig = {
  * @type {import('eslint').Linter.Config[]}
  */
 const configs = [
-	eslintConfigPrettier,
-	importPlugin.flatConfigs.recommended,
-	...baseConfig,
-	...tseslintConfig,
-	pluginN.configs['flat/recommended-module'],
-	nodeConfig,
+  eslintConfigPrettier,
+  importPlugin.flatConfigs.recommended,
+  ...baseConfig,
+  ...tseslintConfig,
+  pluginN.configs['flat/recommended-module'],
+  nodeConfig,
 ];
 
 export default configs;
