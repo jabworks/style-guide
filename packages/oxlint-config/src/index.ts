@@ -7,7 +7,7 @@ import typescript from './configs/typescript.js';
 import vitest from './configs/vitest.js';
 
 export { mergeConfigs } from './lib/merge.js';
-export type { OxlintConfig, OxlintOverride, OxlintRuleEntry, OxlintSeverity } from './types.js';
+export type { OxlintConfig, OxlintOverride, OxlintPlugin, OxlintRuleEntry, OxlintSeverity } from './types.js';
 
 export const config = {
   configs: {

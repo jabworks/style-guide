@@ -3,9 +3,8 @@ import type { OxlintConfig } from '../types.js';
 /**
  * Base preset, ported from `@jabworks/eslint-plugin` configs.base.
  *
- * Dropped (no oxlint equivalent as of 1.58): no-floating-decimal,
- * no-implied-eval, no-octal-escape, prefer-regex-literals, object-shorthand,
- * no-unreachable-loop, camelcase, prefer-arrow-callback, no-undef-init,
+ * Dropped (no oxlint equivalent as of 1.73): no-octal-escape,
+ * object-shorthand, camelcase, no-undef-init,
  * import/newline-after-import, import/no-extraneous-dependencies,
  * import/no-relative-packages, import/no-useless-path-segments,
  * import/no-deprecated, simple-import-sort/*, eslint-comments/*, @stylistic/*.
@@ -35,6 +34,7 @@ const base: OxlintConfig = {
     'eslint/no-extra-bind': 'error',
     'eslint/no-extra-label': 'error',
     'eslint/no-implicit-coercion': 'error',
+    'eslint/no-implied-eval': 'error',
     'eslint/no-iterator': 'error',
     'eslint/no-labels': 'error',
     'eslint/no-lone-blocks': 'error',
@@ -51,6 +51,7 @@ const base: OxlintConfig = {
     'eslint/no-useless-concat': 'error',
     'eslint/no-useless-return': 'warn',
     'eslint/prefer-promise-reject-errors': ['error', { allowEmptyReject: true }],
+    'eslint/prefer-regex-literals': 'error',
     'eslint/yoda': 'warn',
     // ES6
     'eslint/no-useless-computed-key': 'warn',
@@ -67,6 +68,7 @@ const base: OxlintConfig = {
     'eslint/no-constant-binary-expression': 'error',
     'eslint/no-promise-executor-return': 'error',
     'eslint/no-template-curly-in-string': 'error',
+    'eslint/no-unreachable-loop': 'error',
     // Stylistic
     'eslint/func-names': ['error', 'as-needed'],
     'eslint/new-cap': ['error', { capIsNew: false }],
@@ -76,6 +78,7 @@ const base: OxlintConfig = {
     'eslint/no-multi-assign': 'error',
     'eslint/no-nested-ternary': 'error',
     'eslint/no-unneeded-ternary': 'error',
+    'eslint/prefer-arrow-callback': 'warn',
     'eslint/prefer-object-spread': 'warn',
     // Variables
     'eslint/no-label-var': 'error',

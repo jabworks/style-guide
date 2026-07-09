@@ -11,8 +11,7 @@ import base from './base.js';
  * restrict-template-expressions, switch-exhaustiveness-check) only run when
  * `oxlint-tsgolint` is installed and oxlint runs with `--type-aware`.
  *
- * Dropped (no oxlint equivalent as of 1.58): method-signature-style,
- * naming-convention.
+ * Dropped (no oxlint equivalent as of 1.73): naming-convention.
  */
 export const typescriptRules: OxlintConfig = {
   plugins: ['typescript'],
@@ -26,6 +25,7 @@ export const typescriptRules: OxlintConfig = {
         prefer: 'type-imports',
       },
     ],
+    'typescript/method-signature-style': 'warn',
     'typescript/no-misused-promises': ['error', { checksVoidReturn: { attributes: false } }],
     'typescript/no-redundant-type-constituents': 'warn',
     'typescript/no-unnecessary-qualifier': 'warn',

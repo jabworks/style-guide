@@ -4,15 +4,15 @@ Opinionated [oxlint](https://oxc.rs/docs/guide/usage/linter/) presets ported fro
 
 ## Presets
 
-| Preset | Extends | Use for |
-|---|---|---|
-| `base` | — | Any JS/TS project |
-| `typescript` | `base` | TypeScript-only additions (some type-aware, see below) |
-| `react` | `typescript` | React libraries and apps |
-| `next` | `typescript` | Next.js applications |
-| `node` | `typescript` | Node.js backends and APIs |
-| `library` | `typescript` | Framework-agnostic utility libraries |
-| `vitest` | — | Vitest test files (composable overlay) |
+| Preset       | Extends      | Use for                                                |
+| ------------ | ------------ | ------------------------------------------------------ |
+| `base`       | —            | Any JS/TS project                                      |
+| `typescript` | `base`       | TypeScript-only additions (some type-aware, see below) |
+| `react`      | `typescript` | React libraries and apps                               |
+| `next`       | `typescript` | Next.js applications                                   |
+| `node`       | `typescript` | Node.js backends and APIs                              |
+| `library`    | `typescript` | Framework-agnostic utility libraries                   |
+| `vitest`     | —            | Vitest test files (composable overlay)                 |
 
 ## Installation
 
@@ -37,8 +37,8 @@ export default defineConfig({
 // package.json
 {
   "scripts": {
-    "lint": "oxlint --type-aware --deny-warnings"
-  }
+    "lint": "oxlint --type-aware --deny-warnings",
+  },
 }
 ```
 
@@ -83,7 +83,7 @@ import { defineConfig } from 'oxlint';
 export default defineConfig({ extends: [node] });
 ```
 
-> **Note:** `n/prefer-promises/fs`, `n/prefer-promises/dns`, and `n/prefer-global/*` from `eslint-plugin-n` have no oxlint built-in equivalent as of 1.69. Use the ESLint `node` config alongside for those rules.
+> **Note:** `n/prefer-promises/fs`, `n/prefer-promises/dns`, and `n/prefer-global/*` from `eslint-plugin-n` have no oxlint built-in equivalent as of 1.73. Use the ESLint `node` config alongside for those rules.
 
 ### `library`
 
@@ -99,11 +99,13 @@ export default defineConfig({ extends: [library] });
 
 ## Rules not ported from @jabworks/eslint-plugin
 
-Unsupported by oxlint 1.69 (verified with `oxlint --rules` and `@oxlint/migrate --details`):
+Unsupported by oxlint 1.73 (verified with `oxlint --rules` and `@oxlint/migrate --details`):
 
-- Core: `no-floating-decimal`, `no-implied-eval`, `no-octal-escape`, `prefer-regex-literals`, `object-shorthand`, `no-unreachable-loop`, `camelcase`, `prefer-arrow-callback`, `no-undef-init`
-- Import: `newline-after-import`, `no-extraneous-dependencies`, `no-relative-packages`, `no-useless-path-segments`, `no-deprecated`
-- TypeScript: `method-signature-style`, `naming-convention`
+- Core: `no-octal-escape`, `object-shorthand`, `camelcase`, `no-undef-init`
+- Import: `newline-after-import`, `no-extraneous-dependencies`, `no-relative-packages`, `no-useless-path-segments`, `no-deprecated`, `prefer-default-export` (used by the ESLint `next` config's route-file override)
+- TypeScript: `naming-convention`
 - React: `function-component-definition`, `hook-use-state`, `jsx-no-leaked-render`, `jsx-sort-props`, `no-unstable-nested-components`
 - Node: `n/prefer-promises/fs`, `n/prefer-promises/dns`, `n/no-callback-literal`, `n/prefer-global/*`
 - Plugins with no oxlint equivalent: `simple-import-sort`, `eslint-comments`, `@stylistic` (formatting is Prettier's job)
+
+Restored in oxlint 1.59–1.73 (previously dropped): `no-implied-eval`, `prefer-regex-literals`, `prefer-arrow-callback`, `no-unreachable-loop`, `typescript/method-signature-style`.

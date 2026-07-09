@@ -6,7 +6,7 @@ import { vitestOverride } from './vitest.js';
 /**
  * Node.js preset, ported from `@jabworks/eslint-plugin` configs.node.
  *
- * Dropped (no oxlint equivalent as of 1.69): n/prefer-promises/fs,
+ * Dropped (no oxlint equivalent as of 1.73): n/prefer-promises/fs,
  * n/prefer-promises/dns, n/no-callback-literal, n/prefer-global/*.
  */
 export const nodeRules: OxlintConfig = {
