@@ -32,14 +32,14 @@ Add the plugin to your ESLint configuration. Example using the flat config forma
 import { plugin as jabworksPlugin } from '@jabworks/eslint-plugin';
 
 export default [
-	...jabworksPlugin.configs.base,
-	// or pick the config that matches your project:
-	// ...jabworksPlugin.configs.react,
-	// ...jabworksPlugin.configs.next,
-	// ...jabworksPlugin.configs.node,
-	// ...jabworksPlugin.configs.library,
-	// ...jabworksPlugin.configs.typescript,
-	// ...jabworksPlugin.configs.vitest,
+  ...jabworksPlugin.configs.base,
+  // or pick the config that matches your project:
+  // ...jabworksPlugin.configs.react,
+  // ...jabworksPlugin.configs.next,
+  // ...jabworksPlugin.configs.node,
+  // ...jabworksPlugin.configs.library,
+  // ...jabworksPlugin.configs.typescript,
+  // ...jabworksPlugin.configs.vitest,
 ];
 ```
 
@@ -47,16 +47,16 @@ Legacy `.eslintrc` configs are not provided. Use flat config with ESLint v9+.
 
 ## Available Configs
 
-| Config | Extends | Use for |
-|---|---|---|
-| `base` | — | Any JS/TS project |
-| `comments` | — | ESLint directive comments |
-| `typescript` | `base` | TypeScript-only additions |
-| `react` | `base` + `typescript` | React libraries and apps |
-| `next` | `base` + `typescript` + `react` | Next.js applications |
-| `node` | `base` + `typescript` | Node.js backends and APIs |
-| `library` | `base` + `typescript` | Framework-agnostic utility libraries |
-| `vitest` | — | Vitest test files (composable overlay) |
+| Config       | Extends                         | Use for                                |
+| ------------ | ------------------------------- | -------------------------------------- |
+| `base`       | —                               | Any JS/TS project                      |
+| `comments`   | —                               | ESLint directive comments              |
+| `typescript` | `base`                          | TypeScript-only additions              |
+| `react`      | `base` + `typescript`           | React libraries and apps               |
+| `next`       | `base` + `typescript` + `react` | Next.js applications                   |
+| `node`       | `base` + `typescript`           | Node.js backends and APIs              |
+| `library`    | `base` + `typescript`           | Framework-agnostic utility libraries   |
+| `vitest`     | —                               | Vitest test files (composable overlay) |
 
 ### `node`
 
@@ -76,8 +76,8 @@ export default plugin.configs.node;
 
 No environment globals (environment-agnostic). Enforces named exports and cycle-free module graphs suitable for tree-shakeable packages like utility libraries.
 
-- `import/no-default-export` — named exports only
-- `import/no-cycle` — error (enabled; disabled in `base` for performance)
+- `import-x/no-default-export` — named exports only
+- `import-x/no-cycle` — error (enabled; disabled in `base` for performance)
 
 ```js
 // eslint.config.mjs
@@ -100,7 +100,7 @@ import styles from './styles.css';
 
 ## Compatibility
 
-- **ESLint**: >=9.39.2
+- **ESLint**: ^10.5.0 (flat config only)
 
 ## License
 

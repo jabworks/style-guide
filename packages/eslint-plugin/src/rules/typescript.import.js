@@ -5,15 +5,15 @@
  * @type {import('eslint').Linter.RulesRecord}
  */
 const disabledRules = {
-	'import/default': 'off',
-	'import/export': 'off',
-	'import/namespace': 'off',
-	'import/no-unresolved': 'off',
+  'import-x/default': 'off',
+  'import-x/export': 'off',
+  'import-x/namespace': 'off',
+  'import-x/no-unresolved': 'off',
 };
 
 /** @type {import('eslint').Linter.RulesRecord} */
 const rules = {
-	...disabledRules,
+  ...disabledRules,
 };
 
 export default rules;
