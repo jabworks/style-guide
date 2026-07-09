@@ -32,26 +32,28 @@ export default defineConfig({ ...config, printWidth: 80 });
 
 ## Config
 
-| Option | Value | Notes |
-|---|---|---|
-| `printWidth` | `120` | |
-| `tabWidth` | `2` | |
-| `useTabs` | `false` | |
-| `semi` | `true` | |
-| `singleQuote` | `true` | |
-| `jsxSingleQuote` | `true` | |
-| `quoteProps` | `"as-needed"` | |
-| `trailingComma` | `"all"` | |
-| `bracketSpacing` | `true` | |
-| `bracketSameLine` | `false` | |
-| `arrowParens` | `"avoid"` | |
-| `endOfLine` | `"lf"` | |
-| `singleAttributePerLine` | `true` | |
-| `sortPackageJson` | `true` | Built-in; replaces `prettier-plugin-packagejson` |
-| `sortTailwindcss` | `true` | Built-in; replaces `prettier-plugin-tailwindcss` |
+| Option                   | Value         | Notes                                                  |
+| ------------------------ | ------------- | ------------------------------------------------------ |
+| `printWidth`             | `120`         |                                                        |
+| `tabWidth`               | `2`           |                                                        |
+| `useTabs`                | `false`       |                                                        |
+| `semi`                   | `true`        |                                                        |
+| `singleQuote`            | `true`        |                                                        |
+| `jsxSingleQuote`         | `true`        |                                                        |
+| `quoteProps`             | `"as-needed"` |                                                        |
+| `trailingComma`          | `"all"`       |                                                        |
+| `bracketSpacing`         | `true`        |                                                        |
+| `bracketSameLine`        | `false`       |                                                        |
+| `arrowParens`            | `"avoid"`     |                                                        |
+| `endOfLine`              | `"lf"`        |                                                        |
+| `singleAttributePerLine` | `true`        |                                                        |
+| `sortImports`            | `true`        | Built-in import sorting for the oxlint+oxfmt toolchain |
+| `sortPackageJson`        | `true`        | Built-in; replaces `prettier-plugin-packagejson`       |
+| `sortTailwindcss`        | `true`        | Built-in; replaces `prettier-plugin-tailwindcss`       |
 
 ### Differences from `@jabworks/prettier-config`
 
-- **No general JSON sorting** — oxfmt has no equivalent to `prettier-plugin-sort-json` for arbitrary JSON files. Only `package.json` is sorted (via `sortPackageJson`).
+- **No general JSON sorting** — oxfmt has no equivalent to `prettier-plugin-sort-json` for arbitrary JSON files. Only `package.json` is sorted (via `sortPackageJson`). Keep Prettier for `*.json` if sorted JSON matters to you.
+- **Import sorting is oxfmt's, not simple-import-sort's** — `sortImports` is enabled so the oxlint+oxfmt toolchain sorts imports at all (oxlint has no `simple-import-sort` port), but the resulting order differs from the ESLint toolchain's custom groups.
 - **`sortPackageJson` and `sortTailwindcss` are built-in** — no plugins to install.
 - **`oxfmt` is still in beta** — API may change before a stable release.
