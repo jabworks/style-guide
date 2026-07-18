@@ -18,7 +18,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "next": "^16.2.3",
+    "next": "^16.2.10",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },
@@ -27,21 +27,21 @@
     "@jabworks/prettier-config": "workspace:*",
     "@jabworks/stylelint-config": "workspace:*",
     "@jabworks/typescript-config": "workspace:*",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.1.1",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
-    "@vitest/browser-playwright": "^4.1.4",
-    "@vitest/browser-preview": "^4.1.4",
-    "@vitest/coverage-v8": "4.1.8",
-    "eslint": "^10.5.0",
+    "@vitest/browser-playwright": "^4.1.10",
+    "@vitest/browser-preview": "^4.1.10",
+    "@vitest/coverage-v8": "4.1.10",
+    "eslint": "^10.7.0",
     "jsdom": "^29.0.2",
-    "playwright": "^1.60.0",
-    "prettier": "^3.8.2",
-    "stylelint": "^17.13.0",
-    "typescript": "6.0.3",
-    "vite": "^8.1.4",
-    "vitest": "^4.1.4",
+    "playwright": "^1.61.1",
+    "prettier": "^3.9.5",
+    "stylelint": "^17.14.0",
+    "typescript": "7.0.2",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10",
     "vitest-browser-react": "^2.2.0"
   }
 }

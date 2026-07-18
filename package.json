@@ -16,13 +16,13 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.7.0",
-    "@changesets/cli": "^2.31.0",
+    "@changesets/cli": "^2.31.1",
     "@jabworks/oxfmt-config": "workspace:*",
     "@jabworks/oxlint-config": "workspace:*",
-    "oxfmt": "^0.58.0",
-    "oxlint": "^1.73.0",
-    "turbo": "^2.9.18",
-    "typescript": "6.0.3"
+    "oxfmt": "^0.59.0",
+    "oxlint": "^1.74.0",
+    "turbo": "^2.10.5",
+    "typescript": "7.0.2"
   },
   "engines": {
     "node": ">=24"
