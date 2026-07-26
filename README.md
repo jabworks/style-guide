@@ -15,7 +15,7 @@ This repository includes the following packages:
 ### Packages
 
 - **`@jabworks/eslint-plugin`**: Comprehensive ESLint plugin with modular flat configs for JavaScript, TypeScript, React, Next.js, and Vitest. Features zero-tolerance for warnings and support for modern development patterns.
-- **`@jabworks/oxlint-config`**: Shareable oxlint presets (base, typescript, react, next, node, library, vitest) ported from `@jabworks/eslint-plugin`. Requires `oxlint` ≥1.73.0 and `oxlint-tsgolint` for type-aware rules.
+- **`@jabworks/oxlint-config`**: Shareable oxlint presets (base, typescript, react, next, node, library, vitest) ported from `@jabworks/eslint-plugin`. Requires `oxlint` ≥1.75.0 and `oxlint-tsgolint` for type-aware rules.
 - **`@jabworks/oxfmt-config`**: Opinionated oxfmt formatter configuration ported from `@jabworks/prettier-config`. Includes built-in Tailwind CSS class sorting and package.json ordering.
 - **`@jabworks/prettier-config`**: Opinionated Prettier configuration with essential plugins for Tailwind CSS class sorting, JSON formatting, and package.json organization.
 - **`@jabworks/typescript-config`**: Shared TypeScript configurations (`base`, `nextjs`, `react-library`) with strict settings and modern module resolution. Internal to this monorepo (not published).
