@@ -15,14 +15,14 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.7.0",
-    "@changesets/cli": "^2.31.0",
+    "@changesets/changelog-github": "^1.0.0",
+    "@changesets/cli": "^3.0.0",
     "@jabworks/oxfmt-config": "workspace:*",
     "@jabworks/oxlint-config": "workspace:*",
-    "oxfmt": "^0.58.0",
-    "oxlint": "^1.73.0",
-    "turbo": "^2.9.18",
-    "typescript": "6.0.3"
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
+    "turbo": "^2.10.9",
+    "typescript": "7.0.2"
   },
   "engines": {
     "node": ">=24"
