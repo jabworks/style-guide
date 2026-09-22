@@ -9,21 +9,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
-### 3. Add a react-native (Expo) preset to oxlint-config (2026-09-22)
-
-Driven by pocket-haven (Expo 57, RN 0.86, expo-router, R3F/three.js), which today lints with eslint-config-expo. The
-`react` preset is web-shaped, and each of these is wrong on RN:
-
-- `env.browser: true` accepts `window`/`document`. oxlint 1.85 has no react-native env (only
-  browser/node/serviceworker/shared-node-browser/worker), so use `shared-node-browser` plus `globals: { __DEV__: 'readonly' }`.
-- The `jsx-a11y` plugin and `react/button-has-type`/`react/jsx-no-target-blank` target the DOM. Drop them from the RN preset.
-- The expo-router `app/**` directory needs `import/no-default-export` off (plus `import/prefer-default-export`, as `next` does).
-  Check that `unicorn/filename-case` kebabCase accepts `_layout.tsx`, `[id].tsx`, `+not-found.tsx`, `(tabs)/`.
-- Ignore patterns: `.expo/**`, `android/**`, `ios/**`, `expo-env.d.ts`, `metro.config.js`, `app.config.ts`.
-- Consider the `react-perf` plugin (4 rules). Inline objects/functions in props hurt RN lists.
-
-Extend `react` via mergeConfigs; export as `reactNative` (name TBD). Dogfood with a fixture before publishing.
-
 ### 4. Imperative-renderer override for R3F / three.js files (2026-09-22)
 
 pocket-haven's eslint config turns off `react-hooks/refs`, `react-hooks/preserve-manual-memoization` and
@@ -80,6 +65,24 @@ in the effect.
 Since #60 the `react`, `next`, and `reactNative` presets hold `purity` at error for parity. Options: keep parity and
 report upstream, or drop `purity` to warn in the oxlint presets with a comment citing this item. Decide after checking
 oxc's issue tracker; the repro is small (a component with an async handler that calls `Date.now()`).
+
+#### Status 2026-09-22 — not an oxlint false positive; the divergence is the compiler's try/catch bailout
+
+The "false positive in oxlint's port" conclusion above was wrong. Bisected with a minimal repro:
+
+- Plain sync or async handlers that call `Date.now()` are **not** flagged by oxlint. Only true in-render calls are.
+- The trigger is a handler **called from an arrow inside a `.map()` callback in JSX**
+  (`OFFSETS.map(m => <Button onPress={() => scheduleTest(m)} />)`). **react-hooks 7.1.1 flags that repro too**, on the
+  same line, so it is the React Compiler rule's own semantics and oxlint matches it.
+- pocket-haven's real handler escapes react-hooks only because its body uses `try/catch/finally`, which the React
+  Compiler bails out of. oxlint keeps analyzing through it. A `try/finally` variant is clean in oxlint too, so the gap
+  is a narrow bailout difference, not a precision bug.
+
+Decision: keep `react/purity` at `error` (parity holds). The "drop to warn" option was also weaker than it sounded:
+with the README's recommended `--deny-warnings`, a warning fails lint the same way an error does.
+
+Remaining question: whether to report the try/catch bailout difference upstream. It is low value, since oxlint is the
+stricter of the two there. Otherwise this item can close.
 
 ## Someday
 
