@@ -6,3 +6,43 @@ allowBuilds:
   esbuild: true
   sharp: true
   unrs-resolver: true
+
+# next 16.2.12 fixes 9 advisories (4 high) and was published inside pnpm's
+# 24h minimumReleaseAge window, so resolving it required these exclusions.
+# pnpm writes them automatically on any resolving install. CI is unaffected
+# either way — --frozen-lockfile does not re-resolve. Safe to delete once
+# 16.2.12 has aged out and the block stops being regenerated.
+minimumReleaseAgeExclude:
+  - '@next/env@16.2.12'
+  - '@next/swc-darwin-arm64@16.2.12'
+  - '@next/swc-darwin-x64@16.2.12'
+  - '@next/swc-linux-arm64-gnu@16.2.12'
+  - '@next/swc-linux-arm64-musl@16.2.12'
+  - '@next/swc-linux-x64-gnu@16.2.12'
+  - '@next/swc-linux-x64-musl@16.2.12'
+  - '@next/swc-win32-arm64-msvc@16.2.12'
+  - '@next/swc-win32-x64-msvc@16.2.12'
+  - next@16.2.12
+
+# Security advisories in transitive dependencies that no direct bump reaches.
+# Each entry is the lowest version carrying the fix. Re-check with
+# `pnpm audit:deps` and drop entries once a dependency ships the fix on its own.
+#
+# Known accepted exception: brace-expansion@1.1.16 still matches
+# GHSA-mh99-v99m-4gvg, which lists `fixed: 5.0.8` with no 1.x backport — 1.1.16
+# is the maintenance-v1 tip. It arrives via minimatch@3 (eslint-plugin-react,
+# eslint-plugin-jsx-a11y, eslint-plugin-import), and forcing 5.x under
+# minimatch@3 breaks it. Lint-time DoS reachable only through hostile glob
+# patterns, so `pnpm audit:deps` is expected to report exactly this one.
+overrides:
+  'brace-expansion@1': ^1.1.16
+  'brace-expansion@5': ^5.0.8
+  'esbuild': ^0.28.1
+  'fast-uri': ^3.1.4
+  'js-yaml@3': ^3.15.0
+  'js-yaml@4': ^4.3.0
+  'minimatch@3': ^3.1.4
+  'postcss': ^8.5.18
+  'sharp': ^0.35.0
+  'undici': ^7.28.0
+  'ws': ^8.21.0

@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "audit:deps": "node scripts/audit.js",
     "build": "turbo run build",
     "build:packages": "turbo run build --filter \"./packages/**\"",
     "check-types": "turbo run check-types",
@@ -21,6 +22,7 @@
     "@jabworks/oxlint-config": "workspace:*",
     "oxfmt": "^0.60.0",
     "oxlint": "^1.75.0",
+    "semver": "^7.8.5",
     "turbo": "^2.9.18",
     "typescript": "6.0.3"
   },
