@@ -9,13 +9,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
-### 2. Extend OxlintConfig types with globals and jsPlugins (2026-09-22)
-
-`types.ts` `OxlintConfig` omits `globals`, and the schema's top-level `jsPlugins` and `options`, as of 1.85. The RN
-preset needs `globals` (for `__DEV__`, since there is no `react-native` env) and the jsPlugins experiment needs
-`jsPlugins`. Also check whether `OxlintOverride` should carry `globals`/`jsPlugins`. Prerequisite for the RN preset
-item below.
-
 ### 3. Add a react-native (Expo) preset to oxlint-config (2026-09-22)
 
 Driven by pocket-haven (Expo 57, RN 0.86, expo-router, R3F/three.js), which today lints with eslint-config-expo. The
