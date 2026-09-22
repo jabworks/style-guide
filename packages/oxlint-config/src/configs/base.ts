@@ -3,7 +3,7 @@ import type { OxlintConfig } from '../types.js';
 /**
  * Base preset, ported from `@jabworks/eslint-plugin` configs.base.
  *
- * Dropped (no oxlint equivalent as of 1.75): no-octal-escape, camelcase,
+ * Dropped (no oxlint equivalent as of 1.85): no-octal-escape, camelcase,
  * no-undef-init, import/no-extraneous-dependencies,
  * import/no-relative-packages, import/no-useless-path-segments,
  * import/no-deprecated, simple-import-sort/*, eslint-comments/*, @stylistic/*.
