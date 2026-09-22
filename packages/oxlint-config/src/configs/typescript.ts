@@ -11,7 +11,7 @@ import base from './base.js';
  * restrict-template-expressions, switch-exhaustiveness-check) only run when
  * `oxlint-tsgolint` is installed and oxlint runs with `--type-aware`.
  *
- * Dropped (no oxlint equivalent as of 1.73): naming-convention.
+ * Dropped (no oxlint equivalent as of 1.75): naming-convention.
  */
 export const typescriptRules: OxlintConfig = {
   plugins: ['typescript'],

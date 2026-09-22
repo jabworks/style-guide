@@ -51,7 +51,7 @@ The plugin ships as ESM source (no build). `exports` in `package.json` point dir
 - `lib/merge.ts` — `mergeConfigs()` utility
 - `index.ts` — re-exports all named configs and `{ config }` aggregate
 
-Built with `tsdown` into dual CJS+ESM `dist/`. Requires `oxlint ≥1.69.0`.
+Built with `tsdown` into dual CJS+ESM `dist/`. Requires `oxlint ≥1.75.0`.
 
 ### Releases
 

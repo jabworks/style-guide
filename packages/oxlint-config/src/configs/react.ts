@@ -8,9 +8,8 @@ import { vitestOverride } from './vitest.js';
  * Includes the react-hooks rules (folded into oxlint's react plugin) and the
  * vitest override for test files.
  *
- * Dropped (no oxlint equivalent as of 1.73): function-component-definition,
- * hook-use-state, jsx-no-leaked-render, jsx-sort-props,
- * no-unstable-nested-components.
+ * Dropped (no oxlint equivalent as of 1.75): jsx-no-leaked-render,
+ * jsx-sort-props.
  */
 export const reactRules: OxlintConfig = {
   plugins: ['react', 'jsx-a11y'],
@@ -20,6 +19,14 @@ export const reactRules: OxlintConfig = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/button-has-type': 'warn',
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
+    'react/hook-use-state': 'warn',
     'react/jsx-boolean-value': 'warn',
     'react/jsx-curly-brace-presence': 'warn',
     'react/jsx-fragments': 'warn',
@@ -27,6 +34,7 @@ export const reactRules: OxlintConfig = {
     'react/jsx-no-useless-fragment': ['warn', { allowExpressions: true }],
     'react/jsx-pascal-case': 'warn',
     'react/no-array-index-key': 'warn',
+    'react/no-unstable-nested-components': 'error',
     'react/self-closing-comp': 'warn',
     // react-hooks rules live under oxlint's react plugin.
     'react/rules-of-hooks': 'error',

@@ -3,9 +3,8 @@ import type { OxlintConfig } from '../types.js';
 /**
  * Base preset, ported from `@jabworks/eslint-plugin` configs.base.
  *
- * Dropped (no oxlint equivalent as of 1.73): no-octal-escape,
- * object-shorthand, camelcase, no-undef-init,
- * import/newline-after-import, import/no-extraneous-dependencies,
+ * Dropped (no oxlint equivalent as of 1.75): no-octal-escape, camelcase,
+ * no-undef-init, import/no-extraneous-dependencies,
  * import/no-relative-packages, import/no-useless-path-segments,
  * import/no-deprecated, simple-import-sort/*, eslint-comments/*, @stylistic/*.
  */
@@ -57,6 +56,7 @@ const base: OxlintConfig = {
     'eslint/no-useless-computed-key': 'warn',
     'eslint/no-useless-rename': 'warn',
     'eslint/no-var': 'error',
+    'eslint/object-shorthand': 'warn',
     'eslint/prefer-const': 'warn',
     'eslint/prefer-numeric-literals': 'error',
     'eslint/prefer-rest-params': 'error',
@@ -94,6 +94,7 @@ const base: OxlintConfig = {
     ],
     // Import
     'import/first': 'error',
+    'import/newline-after-import': 'warn',
     'import/no-absolute-path': 'error',
     'import/no-default-export': 'error',
     'import/no-mutable-exports': 'error',

@@ -83,7 +83,7 @@ import { defineConfig } from 'oxlint';
 export default defineConfig({ extends: [node] });
 ```
 
-> **Note:** `n/prefer-promises/fs`, `n/prefer-promises/dns`, and `n/prefer-global/*` from `eslint-plugin-n` have no oxlint built-in equivalent as of 1.73. Use the ESLint `node` config alongside for those rules.
+> **Note:** `n/prefer-promises/fs`, `n/prefer-promises/dns`, and `n/prefer-global/*` from `eslint-plugin-n` have no oxlint built-in equivalent as of 1.75. Use the ESLint `node` config alongside for those rules.
 
 ### `library`
 
@@ -99,13 +99,20 @@ export default defineConfig({ extends: [library] });
 
 ## Rules not ported from @jabworks/eslint-plugin
 
-Unsupported by oxlint 1.73 (verified with `oxlint --rules` and `@oxlint/migrate --details`):
+Unsupported by oxlint 1.75. Verify by loading a config that names the rule and
+checking for `Rule '<name>' not found in plugin '<plugin>'` — `oxlint --rules`
+prints nothing and cannot be used for this.
 
-- Core: `no-octal-escape`, `object-shorthand`, `camelcase`, `no-undef-init`
-- Import: `newline-after-import`, `no-extraneous-dependencies`, `no-relative-packages`, `no-useless-path-segments`, `no-deprecated`, `prefer-default-export` (used by the ESLint `next` config's route-file override)
+- Core: `no-octal-escape`, `camelcase`, `no-undef-init`
+- Import: `no-extraneous-dependencies`, `no-relative-packages`, `no-useless-path-segments`, `no-deprecated`
 - TypeScript: `naming-convention`
-- React: `function-component-definition`, `hook-use-state`, `jsx-no-leaked-render`, `jsx-sort-props`, `no-unstable-nested-components`
+- React: `jsx-no-leaked-render`, `jsx-sort-props`
 - Node: `n/prefer-promises/fs`, `n/prefer-promises/dns`, `n/no-callback-literal`, `n/prefer-global/*`
 - Plugins with no oxlint equivalent: `simple-import-sort`, `eslint-comments`, `@stylistic` (formatting is Prettier's job)
 
-Restored in oxlint 1.59–1.73 (previously dropped): `no-implied-eval`, `prefer-regex-literals`, `prefer-arrow-callback`, `no-unreachable-loop`, `typescript/method-signature-style`.
+Restored in oxlint 1.59–1.75 (previously dropped): `no-implied-eval`,
+`prefer-regex-literals`, `prefer-arrow-callback`, `no-unreachable-loop`,
+`typescript/method-signature-style`, `object-shorthand`,
+`import/newline-after-import`, `import/prefer-default-export`,
+`react/function-component-definition`, `react/hook-use-state`,
+`react/no-unstable-nested-components`.

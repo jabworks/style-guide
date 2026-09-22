@@ -19,13 +19,13 @@
     "@changesets/cli": "^2.31.0",
     "@jabworks/oxfmt-config": "workspace:*",
     "@jabworks/oxlint-config": "workspace:*",
-    "oxfmt": "^0.58.0",
-    "oxlint": "^1.73.0",
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.75.0",
     "turbo": "^2.9.18",
     "typescript": "6.0.3"
   },
   "engines": {
     "node": ">=24"
   },
-  "packageManager": "pnpm@10.29.3+sha512.498e1fb4cca5aa06c1dcf2611e6fafc50972ffe7189998c409e90de74566444298ffe43e6cd2acdc775ba1aa7cc5e092a8b7054c811ba8c5770f84693d33d2dc"
+  "packageManager": "pnpm@11.17.0+sha512.cca3cea332ad254bb84145f966d19f4879615210346fc92c79a047f23a0d7b3cca3c3792f0076ba1f1831d277efbcf0a9119b31a9a60eca7fb3d6231f331ef72"
 }
