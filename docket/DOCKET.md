@@ -16,26 +16,6 @@ Open points: `sortTailwindcss: true` is a no-op without Tailwind (check that it 
 default ignores for `android/`, `ios/`, `.expo/`; and whether oxfmt 0.70's new `experimentalOperatorPosition` matters.
 Verify by formatting pocket-haven's src with oxfmt and diffing against prettier output (read-only there).
 
-### 9. Presets lose env, globals, and ignorePatterns through extends (2026-09-22)
-
-Found while building #3 (2026-09-22) and verified on oxlint 1.85. `defineConfig({ extends: [preset] })` keeps the
-preset's `rules`, `categories`, and `overrides`, but drops its top-level `env`, `globals`, and `ignorePatterns`. oxlint's
-own docs only say configs are "merged from the first to the last", so this behavior is undocumented.
-
-Presets affected today, all used through `extends` as the README shows:
-
-- `base`: `env.builtin`, and its `ignorePatterns` (dist/build/out/coverage, `*.config.{js,mjs,cjs}`).
-- `react`: `env.browser`.
-- `node`: `env.node`.
-- `next`: `.next/**`.
-
-Practical impact is small today: `eslint/no-undef` is a nursery rule and off by default, and oxlint honors `.gitignore`.
-But the README describes these settings as if they apply, and a consumer who enables `no-undef` gets false errors.
-
-Fix pattern (already used in `reactNative`): move `env`/`globals` into a catch-all `overrides: [{ files: ['**/*'] }]`
-entry. For `ignorePatterns`, either document spreading or `mergeConfigs` as the way to get them, or turn the
-config-file ignores into an override that switches rules off. Also worth reporting upstream to oxc as a docs gap or bug.
-
 ## Someday
 
 ### 6. Evaluate RN/Expo rules via oxlint jsPlugins (2026-09-22)

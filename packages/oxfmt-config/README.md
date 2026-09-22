@@ -56,4 +56,19 @@ export default defineConfig({ ...config, printWidth: 80 });
 - **No general JSON sorting** — oxfmt has no equivalent to `prettier-plugin-sort-json` for arbitrary JSON files. Only `package.json` is sorted (via `sortPackageJson`). Keep Prettier for `*.json` if sorted JSON matters to you.
 - **Import sorting is oxfmt's, not simple-import-sort's** — `sortImports` is enabled so the oxlint+oxfmt toolchain sorts imports at all (oxlint has no `simple-import-sort` port), but the resulting order differs from the ESLint toolchain's custom groups.
 - **`sortPackageJson` and `sortTailwindcss` are built-in** — no plugins to install.
+- **Long unions break differently.** When a string-literal union fits on one line after a break at `=`, Prettier keeps it
+  there, and oxfmt puts one member per line. Seen on oxfmt 0.60 and 0.70, so it is not a regression.
 - **`oxfmt` is still in beta** — API may change before a stable release.
+
+## React Native / Expo
+
+The config needs nothing React Native specific:
+
+- **Native folders are skipped.** oxfmt honors `.gitignore`, and Expo's default one already covers `android/`, `ios/`,
+  and `.expo/`.
+- **`experimentalOperatorPosition`** (new in oxfmt 0.70) defaults to `"end"`, the same as Prettier, so it is left unset.
+- **`sortTailwindcss`** does nothing in a project without Tailwind. With NativeWind it is untested.
+
+Migrating an app from `@jabworks/prettier-config`: the first `oxfmt` run reorders imports and sorts `package.json`. On
+one Expo app it changed 32 of 127 files. With import sorting off, only `package.json` and one file hitting the union
+difference above changed.
