@@ -8,5 +8,7 @@ export default defineConfig({
     'apps/web-eslint/**',
     'pnpm-lock.yaml',
     '**/next-env.d.ts',
+    // Owned by the docket CLI, which rewrites it on every add/close.
+    'docket/docket.json',
   ],
 });
