@@ -47,7 +47,7 @@ The plugin ships as ESM source (no build). `exports` in `package.json` point dir
 
 `packages/oxlint-config/src/` mirrors the eslint-plugin config surface:
 
-- `configs/` — TypeScript config files (`base`, `typescript`, `react`, `next`, `node`, `library`, `vitest`)
+- `configs/` — TypeScript config files (`base`, `typescript`, `react`, `react-native`, `next`, `node`, `library`, `vitest`)
 - `lib/merge.ts` — `mergeConfigs()` utility
 - `index.ts` — re-exports all named configs and `{ config }` aggregate
 

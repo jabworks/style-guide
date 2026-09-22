@@ -10,15 +10,14 @@ import { vitestOverride } from './vitest.js';
  *
  * Dropped (no oxlint equivalent as of 1.85): jsx-no-leaked-render,
  * jsx-sort-props, react-hooks/config, react-hooks/gating.
+ *
+ * Split into renderer-agnostic rules and DOM rules so the react-native preset
+ * can take the former without the latter.
  */
-export const reactRules: OxlintConfig = {
-  plugins: ['react', 'jsx-a11y'],
-  env: {
-    browser: true,
-  },
+export const reactCoreRules: OxlintConfig = {
+  plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'react/button-has-type': 'warn',
     'react/function-component-definition': [
       'error',
       {
@@ -30,7 +29,6 @@ export const reactRules: OxlintConfig = {
     'react/jsx-boolean-value': 'warn',
     'react/jsx-curly-brace-presence': 'warn',
     'react/jsx-fragments': 'warn',
-    'react/jsx-no-target-blank': ['error', { allowReferrer: true }],
     'react/jsx-no-useless-fragment': ['warn', { allowExpressions: true }],
     'react/jsx-pascal-case': 'warn',
     'react/no-array-index-key': 'warn',
@@ -55,10 +53,24 @@ export const reactRules: OxlintConfig = {
     'react/unsupported-syntax': 'warn',
     'react/use-memo': 'error',
     'react/void-use-memo': 'error',
-    'jsx-a11y/no-autofocus': 'off',
   },
   overrides: [vitestOverride],
 };
+
+/** Rules and globals that only make sense when rendering to the DOM. */
+export const reactDomRules: OxlintConfig = {
+  plugins: ['jsx-a11y'],
+  env: {
+    browser: true,
+  },
+  rules: {
+    'react/button-has-type': 'warn',
+    'react/jsx-no-target-blank': ['error', { allowReferrer: true }],
+    'jsx-a11y/no-autofocus': 'off',
+  },
+};
+
+export const reactRules: OxlintConfig = mergeConfigs(reactCoreRules, reactDomRules);
 
 const react: OxlintConfig = mergeConfigs(typescript, reactRules);
 

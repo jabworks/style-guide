@@ -9,13 +9,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
-### 2. Extend OxlintConfig types with globals and jsPlugins (2026-09-22)
-
-`types.ts` `OxlintConfig` omits `globals`, and the schema's top-level `jsPlugins` and `options`, as of 1.85. The RN
-preset needs `globals` (for `__DEV__`, since there is no `react-native` env) and the jsPlugins experiment needs
-`jsPlugins`. Also check whether `OxlintOverride` should carry `globals`/`jsPlugins`. Prerequisite for the RN preset
-item below.
-
 ### 3. Add a react-native (Expo) preset to oxlint-config (2026-09-22)
 
 Driven by pocket-haven (Expo 57, RN 0.86, expo-router, R3F/three.js), which today lints with eslint-config-expo. The
@@ -39,12 +32,54 @@ and the React Compiler is disabled in app.json. With the compiler rules now port
 hit the same false positives in oxlint. Decide between a composable exported override (like `vitestOverride`, taking a
 files glob) and README guidance. The scene-boundary `no-restricted-imports` stays project-level, not preset.
 
+#### Status 2026-09-22 — sized against pocket-haven with the new `reactNative` preset
+
+With `reactNative` (#3), pocket-haven's scene code produces 4 × `react/refs` in `src/scene/placed-items.tsx`, and nothing
+from `preserve-manual-memoization`. `react/no-unknown-property` is in oxlint's `restriction` category and is not enabled,
+so R3F's JSX props (`args`, `castShadow`) already pass. The override needs only `refs` and
+`preserve-manual-memoization`.
+
 ### 5. oxfmt-config fit for React Native projects (2026-09-22)
 
 The oxfmt side is mostly already right: pocket-haven's prettier config uses the same option values as the house settings.
 Open points: `sortTailwindcss: true` is a no-op without Tailwind (check that it is harmless, or relevant with NativeWind);
 default ignores for `android/`, `ios/`, `.expo/`; and whether oxfmt 0.70's new `experimentalOperatorPosition` matters.
 Verify by formatting pocket-haven's src with oxfmt and diffing against prettier output (read-only there).
+
+### 9. Presets lose env, globals, and ignorePatterns through extends (2026-09-22)
+
+Found while building #3 (2026-09-22) and verified on oxlint 1.85. `defineConfig({ extends: [preset] })` keeps the
+preset's `rules`, `categories`, and `overrides`, but drops its top-level `env`, `globals`, and `ignorePatterns`. oxlint's
+own docs only say configs are "merged from the first to the last", so this behavior is undocumented.
+
+Presets affected today, all used through `extends` as the README shows:
+
+- `base`: `env.builtin`, and its `ignorePatterns` (dist/build/out/coverage, `*.config.{js,mjs,cjs}`).
+- `react`: `env.browser`.
+- `node`: `env.node`.
+- `next`: `.next/**`.
+
+Practical impact is small today: `eslint/no-undef` is a nursery rule and off by default, and oxlint honors `.gitignore`.
+But the README describes these settings as if they apply, and a consumer who enables `no-undef` gets false errors.
+
+Fix pattern (already used in `reactNative`): move `env`/`globals` into a catch-all `overrides: [{ files: ['**/*'] }]`
+entry. For `ignorePatterns`, either document spreading or `mergeConfigs` as the way to get them, or turn the
+config-file ignores into an override that switches rules off. Also worth reporting upstream to oxc as a docs gap or bug.
+
+### 10. oxlint react/purity flags impure calls inside event handlers (2026-09-22)
+
+Found while building #3 (2026-09-22). oxlint 1.85 `react/purity` reports `Date.now()` in pocket-haven
+`src/app/spike-notify.tsx`. The call is inside `scheduleTest`, an async press handler defined in the component body, not
+during render. eslint-plugin-react-hooks 7.1.1, run on the same file with `react-hooks/purity` at error, reports nothing,
+so this is a false positive in oxlint's port.
+
+Also seen: `react/set-state-in-effect` flags a `setFailures` call in a `catch` block inside an effect
+(`src/app/dev-thumbnails.tsx`) that react-hooks passes. That one is arguable, since the setState does run synchronously
+in the effect.
+
+Since #60 the `react`, `next`, and `reactNative` presets hold `purity` at error for parity. Options: keep parity and
+report upstream, or drop `purity` to warn in the oxlint presets with a comment citing this item. Decide after checking
+oxc's issue tracker; the repro is small (a component with an async handler that calls `Date.now()`).
 
 ## Someday
 

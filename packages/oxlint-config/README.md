@@ -4,15 +4,16 @@ Opinionated [oxlint](https://oxc.rs/docs/guide/usage/linter/) presets ported fro
 
 ## Presets
 
-| Preset       | Extends      | Use for                                                |
-| ------------ | ------------ | ------------------------------------------------------ |
-| `base`       | —            | Any JS/TS project                                      |
-| `typescript` | `base`       | TypeScript-only additions (some type-aware, see below) |
-| `react`      | `typescript` | React libraries and apps                               |
-| `next`       | `react`      | Next.js applications                                   |
-| `node`       | `typescript` | Node.js backends and APIs                              |
-| `library`    | `typescript` | Framework-agnostic utility libraries                   |
-| `vitest`     | —            | Vitest test files (composable overlay)                 |
+| Preset        | Extends      | Use for                                                |
+| ------------- | ------------ | ------------------------------------------------------ |
+| `base`        | —            | Any JS/TS project                                      |
+| `typescript`  | `base`       | TypeScript-only additions (some type-aware, see below) |
+| `react`       | `typescript` | React libraries and apps                               |
+| `next`        | `react`      | Next.js applications                                   |
+| `reactNative` | `typescript` | Expo and React Native apps (oxlint-only)               |
+| `node`        | `typescript` | Node.js backends and APIs                              |
+| `library`     | `typescript` | Framework-agnostic utility libraries                   |
+| `vitest`      | —            | Vitest test files (composable overlay)                 |
 
 ## Installation
 
@@ -25,7 +26,7 @@ npm install -D oxlint oxlint-tsgolint @jabworks/oxlint-config
 ```ts
 // oxlint.config.ts — pick the preset that matches your project
 import { next } from '@jabworks/oxlint-config';
-// or: import { node, library, react, typescript } from '@jabworks/oxlint-config';
+// or: import { node, library, react, reactNative, typescript } from '@jabworks/oxlint-config';
 import { defineConfig } from 'oxlint';
 
 export default defineConfig({
@@ -60,6 +61,38 @@ export default defineConfig({ extends: [custom] });
 ## Type-aware rules
 
 The typescript preset enables type-aware rules (`typescript/no-misused-promises`, `typescript/consistent-type-exports`, `typescript/restrict-template-expressions`, …). These require [`oxlint-tsgolint`](https://github.com/oxc-project/tsgolint) installed in the consuming project and running oxlint with `--type-aware`; without it they are silently skipped.
+
+## React Native preset
+
+`reactNative` is for Expo and bare React Native apps. It has no `@jabworks/eslint-plugin` counterpart.
+
+It carries the same React rules as `react` (hooks, React Compiler rules, component style) but leaves out everything that
+assumes a DOM: the `jsx-a11y` plugin, `env.browser`, `react/button-has-type`, and `react/jsx-no-target-blank`. On top of
+that:
+
+- **Globals.** oxlint has no react-native environment, so the preset enables `shared-node-browser` (fetch, timers, URL,
+  console) and declares `__DEV__` as a read-only global. `window` and `document` stay undefined.
+- **expo-router routes.** Every file under `app/` or `src/app/` is a route, layout, or special file (`_layout`,
+  `+not-found`, `+html`) that expo-router loads through its default export. There, `import/no-default-export` is off and
+  `import/prefer-default-export` is on. API routes (`*+api.ts`) export named HTTP handlers and keep the house named-export
+  rule. `*.config.{ts,mts,cts}` files, such as `app.config.ts`, get the same default-export allowance.
+- **Ignores.** `.expo/`, `android/`, `ios/`, and `expo-env.d.ts`.
+
+expo-router's file names (`[id].tsx`, `[...rest].tsx`, `+not-found.tsx`, `(tabs)/_layout.tsx`) and platform suffixes
+(`card.ios.tsx`) already satisfy `unicorn/filename-case` in kebab case.
+
+```ts
+// oxlint.config.ts
+import { reactNative } from '@jabworks/oxlint-config';
+import { defineConfig } from 'oxlint';
+
+export default defineConfig({ extends: [reactNative] });
+```
+
+> **Note:** oxlint's `extends` keeps a preset's rules, categories, and overrides, but drops its top-level `env`,
+> `globals`, and `ignorePatterns` (verified on 1.85). The preset therefore delivers its globals through a catch-all
+> override. Its ignore patterns only apply when the preset is spread into your config or passed through
+> `mergeConfigs`. Expo's default `.gitignore` already covers those paths, and oxlint honors `.gitignore`.
 
 ## Node and library presets
 
