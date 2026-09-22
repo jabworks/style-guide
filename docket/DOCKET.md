@@ -9,13 +9,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
-### 5. oxfmt-config fit for React Native projects (2026-09-22)
-
-The oxfmt side is mostly already right: pocket-haven's prettier config uses the same option values as the house settings.
-Open points: `sortTailwindcss: true` is a no-op without Tailwind (check that it is harmless, or relevant with NativeWind);
-default ignores for `android/`, `ios/`, `.expo/`; and whether oxfmt 0.70's new `experimentalOperatorPosition` matters.
-Verify by formatting pocket-haven's src with oxfmt and diffing against prettier output (read-only there).
-
 ## Someday
 
 ### 6. Evaluate RN/Expo rules via oxlint jsPlugins (2026-09-22)
