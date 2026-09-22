@@ -1,41 +1,14 @@
+import type { OxlintConfig as UpstreamConfig, OxlintOverride as UpstreamOverride } from 'oxlint';
+
 export type OxlintSeverity = 'off' | 'warn' | 'error';
 
 export type OxlintRuleEntry = OxlintSeverity | [OxlintSeverity, ...unknown[]];
 
-/**
- * Mirrors oxlint's (unexported) `LintPluginOptionsSchema` union as of 1.85.
- */
-export type OxlintPlugin =
-  | 'eslint'
-  | 'react'
-  | 'unicorn'
-  | 'typescript'
-  | 'oxc'
-  | 'import'
-  | 'jsdoc'
-  | 'jest'
-  | 'vitest'
-  | 'jsx-a11y'
-  | 'nextjs'
-  | 'react-perf'
-  | 'promise'
-  | 'node'
-  | 'vue';
+// Derived from oxlint's own exported types (since the >=1.85 peer) rather than mirrored by hand, so fields such as
+// `globals`, `jsPlugins`, and `excludeFiles` can no longer go missing when oxlint grows its schema.
+export type OxlintPlugin = NonNullable<UpstreamConfig['plugins']>[number];
 
-export interface OxlintOverride {
-  files: string[];
-  plugins?: OxlintPlugin[];
-  rules?: Record<string, OxlintRuleEntry>;
-  env?: Record<string, boolean>;
-}
+export type OxlintOverride = UpstreamOverride;
 
-export interface OxlintConfig {
-  $schema?: string;
-  plugins?: OxlintPlugin[];
-  categories?: Record<string, OxlintSeverity>;
-  rules?: Record<string, OxlintRuleEntry>;
-  overrides?: OxlintOverride[];
-  ignorePatterns?: string[];
-  env?: Record<string, boolean>;
-  settings?: Record<string, unknown>;
-}
+// Presets are flat: `mergeConfigs` resolves composition eagerly, so `extends` is left to the consumer's own config.
+export type OxlintConfig = Omit<UpstreamConfig, 'extends'>;
