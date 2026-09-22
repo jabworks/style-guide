@@ -11,9 +11,6 @@ import { vitestOverride } from './vitest.js';
  */
 export const nodeRules: OxlintConfig = {
   plugins: ['node', 'unicorn'],
-  env: {
-    node: true,
-  },
   rules: {
     // Registered under the unicorn plugin in oxlint (not node/).
     'unicorn/no-process-exit': 'error',
@@ -24,7 +21,11 @@ export const nodeRules: OxlintConfig = {
     // process.env access is allowed — use a secrets manager or dotenv in practice
     'node/no-process-env': 'off',
   },
-  overrides: [vitestOverride],
+  overrides: [
+    // oxlint's `extends` drops top-level env, so the Node globals ride on a catch-all override instead.
+    { files: ['**/*'], env: { node: true } },
+    vitestOverride,
+  ],
 };
 
 const node: OxlintConfig = mergeConfigs(typescript, nodeRules);

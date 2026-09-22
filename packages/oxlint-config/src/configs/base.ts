@@ -105,6 +105,18 @@ const base: OxlintConfig = {
     // Unicorn
     'unicorn/filename-case': ['error', { case: 'kebabCase' }],
   },
+  overrides: [
+    {
+      // Tool configs (oxlint.config.ts, vite.config.ts, eslint.config.js, …) must default-export. The ignorePatterns
+      // below used to cover the JS ones, but oxlint's `extends` drops a preset's ignorePatterns, so an override (which
+      // does survive `extends`) is what keeps consumers' config files from failing no-default-export.
+      files: ['*.config.js', '*.config.mjs', '*.config.cjs', '*.config.ts', '*.config.mts', '*.config.cts'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
+  ],
+  // Only effective when the preset is spread or passed through mergeConfigs: `extends` drops ignorePatterns.
   ignorePatterns: [
     'dist/**',
     'build/**',
