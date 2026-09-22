@@ -3,7 +3,7 @@ export type OxlintSeverity = 'off' | 'warn' | 'error';
 export type OxlintRuleEntry = OxlintSeverity | [OxlintSeverity, ...unknown[]];
 
 /**
- * Mirrors oxlint's (unexported) `LintPluginOptionsSchema` union as of 1.75.
+ * Mirrors oxlint's (unexported) `LintPluginOptionsSchema` union as of 1.85.
  */
 export type OxlintPlugin =
   | 'eslint'

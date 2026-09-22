@@ -9,7 +9,7 @@ Opinionated [oxlint](https://oxc.rs/docs/guide/usage/linter/) presets ported fro
 | `base`       | —            | Any JS/TS project                                      |
 | `typescript` | `base`       | TypeScript-only additions (some type-aware, see below) |
 | `react`      | `typescript` | React libraries and apps                               |
-| `next`       | `typescript` | Next.js applications                                   |
+| `next`       | `react`      | Next.js applications                                   |
 | `node`       | `typescript` | Node.js backends and APIs                              |
 | `library`    | `typescript` | Framework-agnostic utility libraries                   |
 | `vitest`     | —            | Vitest test files (composable overlay)                 |
@@ -83,7 +83,7 @@ import { defineConfig } from 'oxlint';
 export default defineConfig({ extends: [node] });
 ```
 
-> **Note:** `n/prefer-promises/fs`, `n/prefer-promises/dns`, and `n/prefer-global/*` from `eslint-plugin-n` have no oxlint built-in equivalent as of 1.75. Use the ESLint `node` config alongside for those rules.
+> **Note:** `n/prefer-promises/fs`, `n/prefer-promises/dns`, and `n/prefer-global/*` from `eslint-plugin-n` have no oxlint built-in equivalent as of 1.85. Use the ESLint `node` config alongside for those rules.
 
 ### `library`
 
@@ -99,14 +99,15 @@ export default defineConfig({ extends: [library] });
 
 ## Rules not ported from @jabworks/eslint-plugin
 
-Unsupported by oxlint 1.75. Verify by loading a config that names the rule and
+Unsupported by oxlint 1.85. Verify by loading a config that names the rule and
 checking for `Rule '<name>' not found in plugin '<plugin>'` — `oxlint --rules`
 prints nothing and cannot be used for this.
 
 - Core: `no-octal-escape`, `camelcase`, `no-undef-init`
 - Import: `no-extraneous-dependencies`, `no-relative-packages`, `no-useless-path-segments`, `no-deprecated`
 - TypeScript: `naming-convention`
-- React: `jsx-no-leaked-render`, `jsx-sort-props`
+- React: `jsx-no-leaked-render`, `jsx-sort-props`, `react-hooks/config`, `react-hooks/gating` (the other twelve React
+  Compiler rules from `react-hooks` `recommended-latest` are ported, at the same severities)
 - Node: `n/prefer-promises/fs`, `n/prefer-promises/dns`, `n/no-callback-literal`, `n/prefer-global/*`
 - Plugins with no oxlint equivalent: `simple-import-sort`, `eslint-comments`, `@stylistic` (formatting is Prettier's job)
 

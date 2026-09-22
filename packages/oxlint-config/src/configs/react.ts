@@ -8,8 +8,8 @@ import { vitestOverride } from './vitest.js';
  * Includes the react-hooks rules (folded into oxlint's react plugin) and the
  * vitest override for test files.
  *
- * Dropped (no oxlint equivalent as of 1.75): jsx-no-leaked-render,
- * jsx-sort-props.
+ * Dropped (no oxlint equivalent as of 1.85): jsx-no-leaked-render,
+ * jsx-sort-props, react-hooks/config, react-hooks/gating.
  */
 export const reactRules: OxlintConfig = {
   plugins: ['react', 'jsx-a11y'],
@@ -39,6 +39,22 @@ export const reactRules: OxlintConfig = {
     // react-hooks rules live under oxlint's react plugin.
     'react/rules-of-hooks': 'error',
     'react/exhaustive-deps': 'warn',
+    // React Compiler rules, mirroring eslint-plugin-react-hooks 7.1.1 `recommended-latest`. Most sit in oxlint's
+    // correctness category and would be errors anyway. Two entries change behaviour: incompatible-library is held at
+    // warn (the category would make it an error), and unsupported-syntax sits in restriction, so listing it turns it on.
+    'react/error-boundaries': 'error',
+    'react/globals': 'error',
+    'react/immutability': 'error',
+    'react/incompatible-library': 'warn',
+    'react/preserve-manual-memoization': 'error',
+    'react/purity': 'error',
+    'react/refs': 'error',
+    'react/set-state-in-effect': 'error',
+    'react/set-state-in-render': 'error',
+    'react/static-components': 'error',
+    'react/unsupported-syntax': 'warn',
+    'react/use-memo': 'error',
+    'react/void-use-memo': 'error',
     'jsx-a11y/no-autofocus': 'off',
   },
   overrides: [vitestOverride],
