@@ -42,9 +42,9 @@
   },
   "devDependencies": {
     "@jabworks/typescript-config": "workspace:*",
-    "oxlint": "^1.75.0",
-    "tsdown": "^0.22.2",
-    "typescript": "^6.0.3"
+    "oxlint": "^1.83.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^7.0.2"
   },
   "peerDependencies": {
     "oxlint": ">=1.75.0"
