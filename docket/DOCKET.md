@@ -9,15 +9,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
-### 1. Bump oxc toolchain to oxlint 1.85 / oxfmt 0.70 (2026-09-22)
-
-First step of the mobile toolchain eval (2026-09-22). oxlint 1.75 → 1.85, oxfmt 0.60 → 0.70, oxlint-tsgolint → 7.0.2002.
-Why it isn't a plain bump: 1.85 ships about 12 React Compiler rules in the `correctness` category, and `base` sets
-`correctness: 'error'`. Every `react`/`next` consumer would have gotten them at error without the preset saying so.
-Branch `chore/oxc-1.85` lists them explicitly at parity with react-hooks 7.1.1 `recommended-latest` (incompatible-library
-and unsupported-syntax at warn) and raises the peer to >=1.85, because naming the rules breaks parsing on older oxlint.
-The drop-list was re-verified on 1.85 and nothing new landed. Close when the PR merges.
-
 ### 2. Extend OxlintConfig types with globals and jsPlugins (2026-09-22)
 
 `types.ts` `OxlintConfig` omits `globals`, and the schema's top-level `jsPlugins` and `options`, as of 1.85. The RN
