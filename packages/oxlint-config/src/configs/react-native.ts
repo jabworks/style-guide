@@ -27,6 +27,8 @@ const reactNative: OxlintConfig = mergeConfigs(typescript, reactCoreRules, {
       },
       globals: {
         __DEV__: 'readonly',
+        // Expo reads `process.env.EXPO_PUBLIC_*`, which Babel inlines at build time.
+        process: 'readonly',
       },
     },
     {

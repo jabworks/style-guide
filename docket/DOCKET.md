@@ -9,21 +9,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
-### 4. Imperative-renderer override for R3F / three.js files (2026-09-22)
-
-pocket-haven's eslint config turns off `react-hooks/refs`, `react-hooks/preserve-manual-memoization` and
-`react/no-unknown-property` inside `src/scene/**`. The scene drives three.js objects through refs from gesture callbacks,
-and the React Compiler is disabled in app.json. With the compiler rules now ported (#1), R3F users
-hit the same false positives in oxlint. Decide between a composable exported override (like `vitestOverride`, taking a
-files glob) and README guidance. The scene-boundary `no-restricted-imports` stays project-level, not preset.
-
-#### Status 2026-09-22 — sized against pocket-haven with the new `reactNative` preset
-
-With `reactNative` (#3), pocket-haven's scene code produces 4 × `react/refs` in `src/scene/placed-items.tsx`, and nothing
-from `preserve-manual-memoization`. `react/no-unknown-property` is in oxlint's `restriction` category and is not enabled,
-so R3F's JSX props (`args`, `castShadow`) already pass. The override needs only `refs` and
-`preserve-manual-memoization`.
-
 ### 5. oxfmt-config fit for React Native projects (2026-09-22)
 
 The oxfmt side is mostly already right: pocket-haven's prettier config uses the same option values as the house settings.

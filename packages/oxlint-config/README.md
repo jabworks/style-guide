@@ -58,6 +58,20 @@ const custom = mergeConfigs(typescript, {
 export default defineConfig({ extends: [custom] });
 ```
 
+### What survives `extends`
+
+oxlint's `extends` keeps a preset's `rules`, `categories`, `plugins`, and `overrides`, but drops its top-level `env`,
+`globals`, and `ignorePatterns` (verified on oxlint 1.85, and not mentioned in oxlint's docs). The presets are built
+around that:
+
+- **Globals** (`env.browser` in `react`/`next`, `env.node` in `node`, the React Native globals in `reactNative`) are
+  delivered through a catch-all `files: ['**/*']` override, which does survive `extends`.
+- **Tool config files** (`*.config.{js,mjs,cjs,ts,mts,cts}`, including `oxlint.config.ts` itself) get an override in
+  `base` that allows their default export.
+- **Ignore patterns** (`dist/`, `build/`, `coverage/`, `.next/`, `.expo/`, …) only apply when a preset is spread into
+  your config or passed through `mergeConfigs`. With plain `extends`, rely on `.gitignore`, which oxlint honors by
+  default and which normally covers these paths already, or add `ignorePatterns` to your own config.
+
 ## Type-aware rules
 
 The typescript preset enables type-aware rules (`typescript/no-misused-promises`, `typescript/consistent-type-exports`, `typescript/restrict-template-expressions`, …). These require [`oxlint-tsgolint`](https://github.com/oxc-project/tsgolint) installed in the consuming project and running oxlint with `--type-aware`; without it they are silently skipped.
@@ -71,7 +85,8 @@ assumes a DOM: the `jsx-a11y` plugin, `env.browser`, `react/button-has-type`, an
 that:
 
 - **Globals.** oxlint has no react-native environment, so the preset enables `shared-node-browser` (fetch, timers, URL,
-  console) and declares `__DEV__` as a read-only global. `window` and `document` stay undefined.
+  console) and declares `__DEV__` and `process` (for Expo's inlined `process.env.EXPO_PUBLIC_*`) as read-only globals.
+  `window` and `document` stay undefined.
 - **expo-router routes.** Every file under `app/` or `src/app/` is a route, layout, or special file (`_layout`,
   `+not-found`, `+html`) that expo-router loads through its default export. There, `import/no-default-export` is off and
   `import/prefer-default-export` is on. API routes (`*+api.ts`) export named HTTP handlers and keep the house named-export
@@ -89,10 +104,8 @@ import { defineConfig } from 'oxlint';
 export default defineConfig({ extends: [reactNative] });
 ```
 
-> **Note:** oxlint's `extends` keeps a preset's rules, categories, and overrides, but drops its top-level `env`,
-> `globals`, and `ignorePatterns` (verified on 1.85). The preset therefore delivers its globals through a catch-all
-> override. Its ignore patterns only apply when the preset is spread into your config or passed through
-> `mergeConfigs`. Expo's default `.gitignore` already covers those paths, and oxlint honors `.gitignore`.
+> **Note:** like every preset's ignore patterns, these only apply when the preset is spread or merged (see
+> [What survives `extends`](#what-survives-extends)). Expo's default `.gitignore` already covers these paths.
 
 ### Imperative renderers (three.js / React Three Fiber)
 

@@ -60,9 +60,8 @@ export const reactCoreRules: OxlintConfig = {
 /** Rules and globals that only make sense when rendering to the DOM. */
 export const reactDomRules: OxlintConfig = {
   plugins: ['jsx-a11y'],
-  env: {
-    browser: true,
-  },
+  // oxlint's `extends` drops top-level env, so the browser globals ride on a catch-all override instead.
+  overrides: [{ files: ['**/*'], env: { browser: true } }],
   rules: {
     'react/button-has-type': 'warn',
     'react/jsx-no-target-blank': ['error', { allowReferrer: true }],
