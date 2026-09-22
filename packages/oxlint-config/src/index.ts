@@ -7,6 +7,7 @@ import react from './configs/react.js';
 import typescript from './configs/typescript.js';
 import vitest from './configs/vitest.js';
 
+export { imperativeRenderOverride } from './configs/imperative-render.js';
 export { mergeConfigs } from './lib/merge.js';
 export type { OxlintConfig, OxlintOverride, OxlintPlugin, OxlintRuleEntry, OxlintSeverity } from './types.js';
 

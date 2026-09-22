@@ -94,6 +94,32 @@ export default defineConfig({ extends: [reactNative] });
 > override. Its ignore patterns only apply when the preset is spread into your config or passed through
 > `mergeConfigs`. Expo's default `.gitignore` already covers those paths, and oxlint honors `.gitignore`.
 
+### Imperative renderers (three.js / React Three Fiber)
+
+Code that drives an imperative renderer from React (three.js through React Three Fiber, Skia, expo-gl) trips two React
+Compiler rules on purpose:
+
+- `react/refs` flags the "latest ref" pattern (`ref.current = value` during render), which frame loops use to read fresh
+  props without re-subscribing every frame.
+- `react/preserve-manual-memoization` only matters when the React Compiler runs, and it is usually off for such code.
+
+`imperativeRenderOverride` turns both off for the globs you pass. Keep them narrow, so the rest of the app is still
+checked:
+
+```ts
+// oxlint.config.ts
+import { imperativeRenderOverride, reactNative } from '@jabworks/oxlint-config';
+import { defineConfig } from 'oxlint';
+
+export default defineConfig({
+  extends: [reactNative],
+  overrides: [imperativeRenderOverride(['src/scene/**'])],
+});
+```
+
+It works with any React preset, not only `reactNative`. R3F's JSX props (`args`, `castShadow`, …) need no override:
+`react/no-unknown-property` is in oxlint's `restriction` category, which no preset enables.
+
 ## Node and library presets
 
 ### `node`

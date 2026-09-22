@@ -9,21 +9,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
-### 3. Add a react-native (Expo) preset to oxlint-config (2026-09-22)
-
-Driven by pocket-haven (Expo 57, RN 0.86, expo-router, R3F/three.js), which today lints with eslint-config-expo. The
-`react` preset is web-shaped, and each of these is wrong on RN:
-
-- `env.browser: true` accepts `window`/`document`. oxlint 1.85 has no react-native env (only
-  browser/node/serviceworker/shared-node-browser/worker), so use `shared-node-browser` plus `globals: { __DEV__: 'readonly' }`.
-- The `jsx-a11y` plugin and `react/button-has-type`/`react/jsx-no-target-blank` target the DOM. Drop them from the RN preset.
-- The expo-router `app/**` directory needs `import/no-default-export` off (plus `import/prefer-default-export`, as `next` does).
-  Check that `unicorn/filename-case` kebabCase accepts `_layout.tsx`, `[id].tsx`, `+not-found.tsx`, `(tabs)/`.
-- Ignore patterns: `.expo/**`, `android/**`, `ios/**`, `expo-env.d.ts`, `metro.config.js`, `app.config.ts`.
-- Consider the `react-perf` plugin (4 rules). Inline objects/functions in props hurt RN lists.
-
-Extend `react` via mergeConfigs; export as `reactNative` (name TBD). Dogfood with a fixture before publishing.
-
 ### 4. Imperative-renderer override for R3F / three.js files (2026-09-22)
 
 pocket-haven's eslint config turns off `react-hooks/refs`, `react-hooks/preserve-manual-memoization` and
@@ -65,21 +50,6 @@ But the README describes these settings as if they apply, and a consumer who ena
 Fix pattern (already used in `reactNative`): move `env`/`globals` into a catch-all `overrides: [{ files: ['**/*'] }]`
 entry. For `ignorePatterns`, either document spreading or `mergeConfigs` as the way to get them, or turn the
 config-file ignores into an override that switches rules off. Also worth reporting upstream to oxc as a docs gap or bug.
-
-### 10. oxlint react/purity flags impure calls inside event handlers (2026-09-22)
-
-Found while building #3 (2026-09-22). oxlint 1.85 `react/purity` reports `Date.now()` in pocket-haven
-`src/app/spike-notify.tsx`. The call is inside `scheduleTest`, an async press handler defined in the component body, not
-during render. eslint-plugin-react-hooks 7.1.1, run on the same file with `react-hooks/purity` at error, reports nothing,
-so this is a false positive in oxlint's port.
-
-Also seen: `react/set-state-in-effect` flags a `setFailures` call in a `catch` block inside an effect
-(`src/app/dev-thumbnails.tsx`) that react-hooks passes. That one is arguable, since the setState does run synchronously
-in the effect.
-
-Since #60 the `react`, `next`, and `reactNative` presets hold `purity` at error for parity. Options: keep parity and
-report upstream, or drop `purity` to warn in the oxlint presets with a comment citing this item. Decide after checking
-oxc's issue tracker; the repro is small (a component with an async handler that calls `Date.now()`).
 
 ## Someday
 
