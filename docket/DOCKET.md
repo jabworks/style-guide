@@ -19,11 +19,35 @@ no-raw-text), and eslint-plugin-expo from eslint-config-expo (no-dynamic-env-var
 speed cost against the native rules before shipping anything in a preset. Alpha status argues for README-documented
 opt-in over a default.
 
+#### Status 2026-09-23 — jsPlugins proven on a real plugin, with one sharp edge
+
+The pocket-haven migration (#7) runs `eslint-plugin-i18next`'s `no-literal-string` through `jsPlugins` on oxlint 1.85,
+with its full options. Probed both ways: copy is flagged, and numbers, emoji, separators, and value props are not.
+
+- **Options are serialized as JSON.** A RegExp option (`/^\p{Emoji}+$/u`) arrives as `{}`, and the plugin threw on every
+  file. Write regex options as strings. Plugins that compile strings without the `u` flag cannot take `\p{…}` classes;
+  use explicit ranges instead.
+- `eslint-disable` comments that name `react-hooks/…` rules are honoured for oxlint's `react/…` equivalents.
+
 ### 7. Migrate pocket-haven to the oxc toolchain (2026-09-22)
 
 The end-to-end dogfood for the mobile presets: replace eslint-config-expo + prettier in pocket-haven with
 @jabworks/oxlint-config (RN preset) + @jabworks/oxfmt-config once the preset ships. Belongs in pocket-haven's own docket
 when started. It is noted here because it is the acceptance test for the RN preset items.
+
+#### Status 2026-09-23 — done on a pocket-haven branch, awaiting merge there
+
+After releasing oxlint-config 0.4.0 and oxfmt-config 0.2.1: pocket-haven branch `chore/oxc-toolchain` (worktree
+`../pocket-haven-oxc`, cut from `feat/mvp-loop` at 61faa59), 4 commits, all four gates green (types, lint with
+`--type-aware --deny-warnings`, format, 241 tests). `reactNative` + `imperativeRenderOverride` covered the route and
+scene cases with no project-level rule changes. What the dogfood surfaced for this repo:
+
+- oxlint's `no-restricted-imports` `group` patterns are not ESLint's: `@react-three/*` does not match
+  `@react-three/fiber/native`; `@react-three/**` does. Worth a README note wherever the presets suggest the rule.
+- Type-aware lint found a real bug there (an un-awaited `File.copy()` that hid failures) on its first run.
+- The `consistent-type-imports` autofix contradicted a code comment. tsc proved the comment stale, not the fix.
+
+Close when the branch lands in pocket-haven.
 
 ### 8. Non-oxc dependency follow-ups from Dependabot #58 (2026-09-22)
 
