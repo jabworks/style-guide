@@ -126,7 +126,8 @@ import { defineConfig } from 'oxlint';
 
 export default defineConfig({
   extends: [reactNative],
-  overrides: [imperativeRenderOverride(['src/scene/**'])],
+  // Point it at wherever your renderer code lives.
+  overrides: [imperativeRenderOverride(['src/3d/**'])],
 });
 ```
 
