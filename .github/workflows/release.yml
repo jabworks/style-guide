@@ -39,8 +39,10 @@ jobs:
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@v1
+        # v2 requires @changesets/cli 3. Its defaults (GitHub releases and tag pushing on) match v1's behaviour.
+        uses: changesets/action@v2
         with:
-          publish: pnpm release
+          publish-script: pnpm release
         env:
+          # Read by @changesets/changelog-github while it versions, not only by the action.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

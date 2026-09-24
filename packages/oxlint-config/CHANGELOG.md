@@ -35,15 +35,12 @@
   expo-gl) from React.
 
   ```ts
-  import {
-    imperativeRenderOverride,
-    reactNative,
-  } from "@jabworks/oxlint-config";
-  import { defineConfig } from "oxlint";
+  import { imperativeRenderOverride, reactNative } from '@jabworks/oxlint-config';
+  import { defineConfig } from 'oxlint';
 
   export default defineConfig({
     extends: [reactNative],
-    overrides: [imperativeRenderOverride(["src/scene/**"])],
+    overrides: [imperativeRenderOverride(['src/scene/**'])],
   });
   ```
 
@@ -115,8 +112,8 @@
 - [#63](https://github.com/jabworks/style-guide/pull/63) [`5c694cd`](https://github.com/jabworks/style-guide/commit/5c694cd297d0797103222318b854baba222d4120) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Add a `reactNative` preset for Expo and React Native apps.
 
   ```ts
-  import { reactNative } from "@jabworks/oxlint-config";
-  import { defineConfig } from "oxlint";
+  import { reactNative } from '@jabworks/oxlint-config';
+  import { defineConfig } from 'oxlint';
 
   export default defineConfig({ extends: [reactNative] });
   ```
