@@ -9,6 +9,14 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
+### 11. Clear the advisories published since the September security pass (2026-09-24)
+
+Found 2026-09-24 while bumping Next (#8, PR #71). `pnpm audit:deps` reports 13 vulnerable packages on main against the 1
+accepted exception (brace-expansion@1.1.16) the September pass left. The new ones include brace-expansion 5.0.8 again,
+browserslist, fast-uri, js-yaml 3 and 4, nanoid 3, sharp, colord, and vitest 4.1.10 with @vitest/mocker. Several sit on
+override entries that pinned the previous fix, so the `overrides` block needs re-checking entry by entry, lowest fixed
+version per advisory as before. vitest 4 → 5 is also Dependabot group C, so the two may land together.
+
 ## Someday
 
 ### 6. Evaluate RN/Expo rules via oxlint jsPlugins (2026-09-22)
@@ -63,6 +71,18 @@ oxfmt-config README is corrected.
 Held out of the oxc bump on purpose: tsdown 0.22 → 0.23, turbo 2.9 → 2.11, @changesets/cli 2 → 3 and changelog-github
 0 → 1 (majors), pnpm 11 → 12.5, react 19.3, next 16.3. TypeScript 7 is still blocked: typescript-eslint peers typescript <6.1, and the Next 16.2 build
 uses the TS JS API. #58 fails CI as a bundle, so split it rather than merging it whole.
+
+#### Status 2026-09-24 — Dependabot #62 (successor to #58) split into groups; A and D shipped
+
+- **A, build tooling** (PR #70): turbo 2.11, tsdown 0.23, rolldown 1.2.9, @types/node 26. Every published build was
+  compared before and after, and consumers see no change. PR #72 renamed the tsdown configs to `.mts` to silence the
+  ESM warning.
+- **D, framework** (PR #71): next 16.3.6 and react 19.3 in the demo apps. Both build on Turbopack.
+- **Open:** B (changesets 3 and changelog-github 1, the release pipeline; dry-run `changeset version` first), C (vitest
+  5, jsdom 30; overlaps #11), E (the ESLint/Prettier side: typescript-eslint 8.70, unicorn 66 → 76, simple-import-sort
+  14; on hold while the focus is oxc), F (TypeScript 7, still blocked). pnpm 12 is not in Dependabot's scope. The Next
+  side of the TS 7 blocker (`experimental.useTypeScriptCli`, previously only in 16.3 previews) should be re-checked
+  against 16.3.6 stable before the next TS 7 attempt.
 
 ## Loose threads
 
