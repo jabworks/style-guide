@@ -47,6 +47,16 @@
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "oxlint": ">=1.85.0"
+    "eslint-plugin-expo": ">=1.1.0",
+    "oxlint": ">=1.85.0",
+    "oxlint-plugin-react-native": ">=0.2.35"
+  },
+  "peerDependenciesMeta": {
+    "eslint-plugin-expo": {
+      "optional": true
+    },
+    "oxlint-plugin-react-native": {
+      "optional": true
+    }
   }
 }

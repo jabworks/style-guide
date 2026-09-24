@@ -249,6 +249,13 @@ importers:
         version: 6.0.3
 
   packages/oxlint-config:
+    dependencies:
+      eslint-plugin-expo:
+        specifier: '>=1.1.0'
+        version: 1.1.0(eslint@10.5.0(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+      oxlint-plugin-react-native:
+        specifier: '>=0.2.35'
+        version: 0.2.35(oxlint@1.85.0(oxlint-tsgolint@7.0.2002))
     devDependencies:
       '@jabworks/typescript-config':
         specifier: workspace:*
@@ -1185,6 +1192,10 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [win32]
+
+  '@oxlint/plugins@1.83.0':
+    resolution: {integrity: sha512-qD64wr6SS1DL7YbJQ8WWjyUfFfrJsvAy9Vo0sG/PYUQy30w0uemN2h6j4xuvj4noyETDpzcGC20sv+FH7GrN5A==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   '@pnpm/deps.graph-sequencer@1100.0.1':
     resolution: {integrity: sha512-pOr5+q1fLYKwFN3LAJuGZEnfXDcQ73zqgDHMtGy+K+uIoUqyY+6MeDCWFwfu+4EFuq76I5EPFofoNAI+Bmmq4A==}
@@ -2346,6 +2357,12 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
+  eslint-plugin-expo@1.1.0:
+    resolution: {integrity: sha512-vPP0EPx7IA7ZfP49dY4rq9RV5jqkFWG+Pih3/oGjzIRjMI+ogcOE8i6isYkLXAdw/yvFV2BRZkTaQaiOGQqn6Q==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      eslint: '>=8.10'
+
   eslint-plugin-import-x@4.17.1:
     resolution: {integrity: sha512-4cdstYkKCyjumM2Q9NSI03K8D2a9F4Ssz33K2lv2hQa4KmR9jPLwk3uWGtNvclfqBrPGfGuMBwsGMbe6dMRbfg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -3205,6 +3222,11 @@ packages:
         optional: true
       vite-plus:
         optional: true
+
+  oxlint-plugin-react-native@0.2.35:
+    resolution: {integrity: sha512-WHwBDoFz2Kh/Hp/F81LOn9k98BqzHH9zOCPvZBR3e+znRMSopPL5HfSY/IpLAZjYThjiAkVo7uVwqUIdmD7RlQ==}
+    peerDependencies:
+      oxlint: '>=1.0.0'
 
   oxlint-tsgolint@7.0.2002:
     resolution: {integrity: sha512-rQAj2RAQM57nCwTd3PhtnAkREGW2StqI47tzudNlJF8WwGommM7rVpeP4O1O8/ZiuDZ9f2GnTESzLHGTluwkvQ==}
@@ -4871,6 +4893,8 @@ snapshots:
   '@oxlint/binding-win32-x64-msvc@1.85.0':
     optional: true
 
+  '@oxlint/plugins@1.83.0': {}
+
   '@pnpm/deps.graph-sequencer@1100.0.1': {}
 
   '@polka/url@1.0.0-next.29': {}
@@ -5926,6 +5950,15 @@ snapshots:
       eslint: 10.5.0(supports-color@10.2.2)
       eslint-compat-utils: 0.5.1(eslint@10.5.0(supports-color@10.2.2))
 
+  eslint-plugin-expo@1.1.0(eslint@10.5.0(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3):
+    dependencies:
+      '@typescript-eslint/types': 8.61.0
+      '@typescript-eslint/utils': 8.61.0(eslint@10.5.0(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+      eslint: 10.5.0(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
   eslint-plugin-import-x@4.17.1(@typescript-eslint/utils@8.61.0(eslint@10.5.0(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-node@0.3.9(supports-color@10.2.2))(eslint@10.5.0(supports-color@10.2.2))(supports-color@10.2.2):
     dependencies:
       '@typescript-eslint/types': 8.61.0
@@ -6860,6 +6893,11 @@ snapshots:
       '@oxfmt/binding-win32-arm64-msvc': 0.70.0
       '@oxfmt/binding-win32-ia32-msvc': 0.70.0
       '@oxfmt/binding-win32-x64-msvc': 0.70.0
+
+  oxlint-plugin-react-native@0.2.35(oxlint@1.85.0(oxlint-tsgolint@7.0.2002)):
+    dependencies:
+      '@oxlint/plugins': 1.83.0
+      oxlint: 1.85.0(oxlint-tsgolint@7.0.2002)
 
   oxlint-tsgolint@7.0.2002:
     optionalDependencies:
