@@ -24,6 +24,10 @@ jobs:
       - name: Build packages
         uses: ./.github/composite-actions/build
 
+      # An oxlint bump can switch rules on through a preset's categories without any preset file changing.
+      - name: Check preset rule snapshot
+        run: pnpm rules:check
+
       - name: Lint
         run: pnpm lint
 

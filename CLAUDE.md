@@ -13,8 +13,14 @@ pnpm lint:packages    # Lint package sources with oxlint (root oxlint.config.ts)
 pnpm check-types      # Type-check all packages
 pnpm format           # Format: oxfmt repo-wide + turbo format (web-eslint uses prettier)
 pnpm dev              # Start all apps in watch mode
+pnpm rules:check      # Compare each oxlint preset's effective rules with packages/oxlint-config/rules.snapshot.json (needs build)
+pnpm rules:update     # Rewrite that snapshot after reviewing a rule-set change
+pnpm audit:deps       # Semver-verified advisory audit over pnpm-lock.yaml
 pnpm release          # Publish via Changesets (after versioning)
 ```
+
+When `rules:check` fails after an oxlint bump, new rules reached the presets through a category. Either set them
+explicitly in the preset, or run `rules:update` and add a changeset that tells consumers what now fires.
 
 All tasks run through Turbo — use `turbo run <task> --filter=<package>` to target a specific package (e.g. `turbo run build --filter=@jabworks/oxlint-config`).
 
