@@ -134,6 +134,40 @@ export default defineConfig({
 It works with any React preset, not only `reactNative`. R3F's JSX props (`args`, `castShadow`, …) need no override:
 `react/no-unknown-property` is in oxlint's `restriction` category, which no preset enables.
 
+### Opt-in plugin layers: `expoPlugin` and `reactNativePlugin`
+
+Two layers add rules that oxlint does not have built in, by running an ESLint-style plugin through oxlint's
+[JS plugin support](https://oxc.rs/docs/guide/usage/linter/js-plugins.html). They are opt-in because each one needs its
+plugin installed, and because any JS plugin adds a fixed runtime cost to every lint run (about 0.2 s on a mid-sized app).
+
+| Layer               | Install                                    | Rules                                                                                                                       |
+| ------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| `expoPlugin`        | `eslint-plugin-expo` (official, from Expo) | `no-dynamic-env-var`, `no-env-var-destructuring`, `use-dom-exports` (error)                                                 |
+| `reactNativePlugin` | `oxlint-plugin-react-native`               | `no-raw-text` (error); `no-color-literals`, `no-inline-styles`, `no-single-element-style-arrays`, `no-unused-styles` (warn) |
+
+- **Env vars:** Expo inlines only literal `process.env.EXPO_PUBLIC_*` reads, so a dynamic key or a destructured read is
+  `undefined` at runtime.
+- **`no-raw-text`:** a string outside `<Text>` is a runtime error on native. The other React Native rules are
+  hygiene: colours belong to theme tokens, and inline or single-element style arrays re-render needlessly.
+- **Left out:** `expo/prefer-box-shadow` (a styling preference) and `react-native/sort-styles` (only orders style
+  keys).
+
+```bash
+npm install -D eslint-plugin-expo oxlint-plugin-react-native
+```
+
+```ts
+// oxlint.config.ts
+import { expoPlugin, reactNative, reactNativePlugin } from '@jabworks/oxlint-config';
+import { defineConfig } from 'oxlint';
+
+export default defineConfig({ extends: [reactNative, expoPlugin, reactNativePlugin] });
+```
+
+Both plugins are optional peer dependencies of this package, which lets pnpm link them where the preset can resolve
+them. Opting into a layer without installing its plugin stops the lint run with `Failed to load JS plugin: <name>`. JS
+plugins are alpha in oxlint and outside its semver guarantees, so pin oxlint in apps that use them.
+
 ## Node and library presets
 
 ### `node`
