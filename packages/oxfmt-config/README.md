@@ -56,8 +56,9 @@ export default defineConfig({ ...config, printWidth: 80 });
 - **No general JSON sorting** — oxfmt has no equivalent to `prettier-plugin-sort-json` for arbitrary JSON files. Only `package.json` is sorted (via `sortPackageJson`). Keep Prettier for `*.json` if sorted JSON matters to you.
 - **Import sorting is oxfmt's, not simple-import-sort's** — `sortImports` is enabled so the oxlint+oxfmt toolchain sorts imports at all (oxlint has no `simple-import-sort` port), but the resulting order differs from the ESLint toolchain's custom groups.
 - **`sortPackageJson` and `sortTailwindcss` are built-in** — no plugins to install.
-- **Long unions break differently.** When a string-literal union fits on one line after a break at `=`, Prettier keeps it
-  there, and oxfmt puts one member per line. Seen on oxfmt 0.60 and 0.70, so it is not a regression.
+- **Long unions break differently.** When a union type (of string literals, object types, or anything else) fits on one
+  line after a break at `=`, Prettier keeps it there, and oxfmt puts one member per line. Seen on oxfmt 0.60 and 0.70, so
+  it is not a regression.
 - **`oxfmt` is still in beta** — API may change before a stable release.
 
 ## React Native / Expo
