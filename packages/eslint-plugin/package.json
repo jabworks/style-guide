@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@jabworks/typescript-config": "workspace:*",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.6.2",
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
