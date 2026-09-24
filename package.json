@@ -13,7 +13,9 @@
     "lint": "turbo run lint",
     "lint:packages": "oxlint packages",
     "release": "changeset publish",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "rules:check": "node scripts/oxlint-rules.js",
+    "rules:update": "node scripts/oxlint-rules.js --update"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.1",

@@ -74,10 +74,17 @@ uses the TS JS API. #58 fails CI as a bundle, so split it rather than merging it
   GitHub releases, and main stayed green.
 - Remaining in Dependabot #76: E (on hold) and F (blocked).
 
+#### Status 2026-09-24 — TypeScript 7 re-checked: one blocker left
+
+- **Cleared:** Next 16.3.6 stable ships `experimental.useTypeScriptCli` (it is in its config schema), so `next build`
+  no longer ties the apps to the TypeScript JS API.
+- **Still blocking:** typescript-eslint 8.70.1 (latest) peers `typescript >=4.8.4 <6.1.0`, and v9 is only an alpha
+  (`8.0.0-alpha.62` on the rc-v8 tag, `8.70.2-alpha` canary). That covers the published eslint-plugin and web-eslint.
+  Re-check when typescript-eslint publishes a TS 7 range.
+- **Rule-set guard:** from PR #81, `pnpm rules:check` fails CI whenever an oxlint bump changes what a preset enforces,
+  so a future Dependabot oxlint bump cannot repeat 1.85's silent switch-on.
+
 ## Loose threads
 
-- `oxlint --rules` prints nothing, but `oxlint --rules --format=json` works (870 rules on 1.85, with scope, category and
-  type_aware). That could bring back a cheap version-to-version rule diff next to the load-a-config drop-list check the
-  README documents.
 - `typescript/no-deprecated` (type-aware) exists in 1.85 as a possible stand-in for the dropped `import/no-deprecated`,
   though only under `--type-aware`.
