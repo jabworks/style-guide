@@ -1,5 +1,13 @@
 # @jabworks/oxlint-config
 
+## 0.4.1
+
+### Patch Changes
+
+- [#69](https://github.com/jabworks/style-guide/pull/69) [`c0aa033`](https://github.com/jabworks/style-guide/commit/c0aa033cfe84f0d43157a61a315d66fd768a7936) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Make the README examples app-neutral. The `imperativeRenderOverride` example no longer uses one app's folder name as if
+  it were a convention, and the oxfmt migration note describes what to expect in general instead of quoting file counts
+  from a single app.
+
 ## 0.4.0
 
 ### Minor Changes
