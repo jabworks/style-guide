@@ -16,8 +16,8 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.7.0",
-    "@changesets/cli": "^2.31.0",
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
     "@jabworks/oxfmt-config": "workspace:*",
     "@jabworks/oxlint-config": "workspace:*",
     "oxfmt": "^0.70.0",
