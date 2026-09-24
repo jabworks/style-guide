@@ -49,6 +49,15 @@ scene cases with no project-level rule changes. What the dogfood surfaced for th
 
 Close when the branch lands in pocket-haven.
 
+#### Status 2026-09-24 — refreshed onto 18 newer pocket-haven commits
+
+The branch was stale: `feat/mvp-loop` had gained the free-building and scene-motion work. I dropped the style commit,
+rebased the other three onto `b317495` (one conflict in room-fill.test, where upstream had added
+`structure`/`getPiece`), and regenerated the style commit. The new code produced 4 findings, one of them a real test
+smell: a bare numeric `.sort()`, which compares as strings. It is now 5 commits, all gates green (339 tests), still a
+fast-forward. The regenerated format showed the union-break difference also applies to object-type unions; the
+oxfmt-config README is corrected.
+
 ### 8. Non-oxc dependency follow-ups from Dependabot #58 (2026-09-22)
 
 Held out of the oxc bump on purpose: tsdown 0.22 → 0.23, turbo 2.9 → 2.11, @changesets/cli 2 → 3 and changelog-github
