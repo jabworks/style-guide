@@ -11,35 +11,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Someday
 
-### 7. Migrate pocket-haven to the oxc toolchain (2026-09-22)
-
-The end-to-end dogfood for the mobile presets: replace eslint-config-expo + prettier in pocket-haven with
-@jabworks/oxlint-config (RN preset) + @jabworks/oxfmt-config once the preset ships. Belongs in pocket-haven's own docket
-when started. It is noted here because it is the acceptance test for the RN preset items.
-
-#### Status 2026-09-23 — done on a pocket-haven branch, awaiting merge there
-
-After releasing oxlint-config 0.4.0 and oxfmt-config 0.2.1: pocket-haven branch `chore/oxc-toolchain` (worktree
-`../pocket-haven-oxc`, cut from `feat/mvp-loop` at 61faa59), 4 commits, all four gates green (types, lint with
-`--type-aware --deny-warnings`, format, 241 tests). `reactNative` + `imperativeRenderOverride` covered the route and
-scene cases with no project-level rule changes. What the dogfood surfaced for this repo:
-
-- oxlint's `no-restricted-imports` `group` patterns are not ESLint's: `@react-three/*` does not match
-  `@react-three/fiber/native`; `@react-three/**` does. Worth a README note wherever the presets suggest the rule.
-- Type-aware lint found a real bug there (an un-awaited `File.copy()` that hid failures) on its first run.
-- The `consistent-type-imports` autofix contradicted a code comment. tsc proved the comment stale, not the fix.
-
-Close when the branch lands in pocket-haven.
-
-#### Status 2026-09-24 — refreshed onto 18 newer pocket-haven commits
-
-The branch was stale: `feat/mvp-loop` had gained the free-building and scene-motion work. I dropped the style commit,
-rebased the other three onto `b317495` (one conflict in room-fill.test, where upstream had added
-`structure`/`getPiece`), and regenerated the style commit. The new code produced 4 findings, one of them a real test
-smell: a bare numeric `.sort()`, which compares as strings. It is now 5 commits, all gates green (339 tests), still a
-fast-forward. The regenerated format showed the union-break difference also applies to object-type unions; the
-oxfmt-config README is corrected.
-
 ### 8. Non-oxc dependency follow-ups from Dependabot #58 (2026-09-22)
 
 Held out of the oxc bump on purpose: tsdown 0.22 → 0.23, turbo 2.9 → 2.11, @changesets/cli 2 → 3 and changelog-github
