@@ -70,6 +70,6 @@ The config needs nothing React Native specific:
 - **`experimentalOperatorPosition`** (new in oxfmt 0.70) defaults to `"end"`, the same as Prettier, so it is left unset.
 - **`sortTailwindcss`** does nothing in a project without Tailwind. With NativeWind it is untested.
 
-Migrating an app from `@jabworks/prettier-config`: the first `oxfmt` run reorders imports and sorts `package.json`. On
-one Expo app it changed 32 of 127 files. With import sorting off, only `package.json` and one file hitting the union
-difference above changed.
+Migrating an app from `@jabworks/prettier-config`: expect the first `oxfmt` run to touch most files that import anything,
+because it sorts imports, and to sort `package.json`. Beyond that, the output matches Prettier's except for the union
+difference above, so the migration diff is mostly import order.
