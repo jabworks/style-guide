@@ -10,22 +10,21 @@ allowBuilds:
 # Security advisories in transitive dependencies that no direct bump reaches.
 # Each entry is the lowest version carrying the fix. Re-check with
 # `pnpm audit:deps` and drop entries once a dependency ships the fix on its own.
-#
-# Known accepted exception: brace-expansion@1.1.16 still matches
-# GHSA-mh99-v99m-4gvg, which lists `fixed: 5.0.8` with no 1.x backport — 1.1.16
-# is the maintenance-v1 tip. It arrives via minimatch@3 (eslint-plugin-react,
-# eslint-plugin-jsx-a11y, eslint-plugin-import), and forcing 5.x under
-# minimatch@3 breaks it. Lint-time DoS reachable only through hostile glob
-# patterns, so `pnpm audit:deps` is expected to report exactly this one.
+# brace-expansion 1.x now has backports (1.1.17, 1.1.18), so the audit is
+# expected to come back clean with no accepted exceptions.
 overrides:
-  'brace-expansion@1': ^1.1.16
-  'brace-expansion@5': ^5.0.8
+  'baseline-browser-mapping': ^2.11.0
+  'brace-expansion@1': ^1.1.18
+  'brace-expansion@5': ^5.0.9
+  'browserslist': ^4.28.7
+  'colord': ^2.9.4
   'esbuild': ^0.28.1
-  'fast-uri': ^3.1.4
-  'js-yaml@3': ^3.15.0
-  'js-yaml@4': ^4.3.0
+  'fast-uri': ^3.1.6
+  'js-yaml@3': ^3.15.2
+  'js-yaml@4': ^4.3.2
   'minimatch@3': ^3.1.4
+  'nanoid@3': ^3.3.18
   'postcss': ^8.5.18
-  'sharp': ^0.35.0
+  'sharp': ^0.35.4
   'undici': ^7.28.0
   'ws': ^8.21.0
