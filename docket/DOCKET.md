@@ -11,24 +11,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Someday
 
-### 6. Evaluate RN/Expo rules via oxlint jsPlugins (2026-09-22)
-
-oxlint `jsPlugins` can run ESLint plugins (alpha, not semver). Candidates: `oxlint-plugin-react-native` 0.2.35 and
-`eslint-plugin-react-native` 5.0.0 (no-unused-styles, no-inline-styles, no-color-literals, split-platform-components,
-no-raw-text), and eslint-plugin-expo from eslint-config-expo (no-dynamic-env-var, no-env-var-destructuring). Measure the
-speed cost against the native rules before shipping anything in a preset. Alpha status argues for README-documented
-opt-in over a default.
-
-#### Status 2026-09-23 — jsPlugins proven on a real plugin, with one sharp edge
-
-The pocket-haven migration (#7) runs `eslint-plugin-i18next`'s `no-literal-string` through `jsPlugins` on oxlint 1.85,
-with its full options. Probed both ways: copy is flagged, and numbers, emoji, separators, and value props are not.
-
-- **Options are serialized as JSON.** A RegExp option (`/^\p{Emoji}+$/u`) arrives as `{}`, and the plugin threw on every
-  file. Write regex options as strings. Plugins that compile strings without the `u` flag cannot take `\p{…}` classes;
-  use explicit ranges instead.
-- `eslint-disable` comments that name `react-hooks/…` rules are honoured for oxlint's `react/…` equivalents.
-
 ### 7. Migrate pocket-haven to the oxc toolchain (2026-09-22)
 
 The end-to-end dogfood for the mobile presets: replace eslint-config-expo + prettier in pocket-haven with
@@ -82,6 +64,15 @@ uses the TS JS API. #58 fails CI as a bundle, so split it rather than merging it
   vitest-browser-react 2.3. The browser suite and a coverage run pass, with no config changes.
 - Dependabot closed #62 and opened #73 in its place. Once it rebases, what remains is B (changesets 3), E (the
   ESLint/Prettier side, on hold), and F (TypeScript 7, blocked).
+
+#### Status 2026-09-24 — group B shipped and proven in a real release
+
+- **B, release pipeline** (PR #77): @changesets/cli 3 and changelog-github 1, with changesets/action v2 (which CLI 3
+  requires). `"format": "oxfmt"` in `.changeset/config.json` fixes the root cause of main's post-release format failure,
+  and the CHANGELOG ignore is removed. A dry run matched CLI 2's versions and CHANGELOG text exactly. The first real
+  release on the new pipeline (oxlint-config 0.4.1, oxfmt-config 0.2.2) published with SLSA provenance, tags, and
+  GitHub releases, and main stayed green.
+- Remaining in Dependabot #76: E (on hold) and F (blocked).
 
 ## Loose threads
 
