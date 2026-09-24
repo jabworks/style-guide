@@ -1,5 +1,16 @@
 # @jabworks/oxfmt-config
 
+## 0.2.2
+
+### Patch Changes
+
+- [#67](https://github.com/jabworks/style-guide/pull/67) [`02e3496`](https://github.com/jabworks/style-guide/commit/02e34960964ef8b916e5e24f294ce2cf8f5ea20f) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Correct the README's note on how oxfmt and Prettier break long unions. It applies to any union type, including unions of
+  object types, not only string-literal unions as 0.2.1 said. Found migrating a second batch of Expo app code.
+
+- [#69](https://github.com/jabworks/style-guide/pull/69) [`c0aa033`](https://github.com/jabworks/style-guide/commit/c0aa033cfe84f0d43157a61a315d66fd768a7936) Thanks [@vi-hieu](https://github.com/vi-hieu)! - Make the README examples app-neutral. The `imperativeRenderOverride` example no longer uses one app's folder name as if
+  it were a convention, and the oxfmt migration note describes what to expect in general instead of quoting file counts
+  from a single app.
+
 ## 0.2.1
 
 ### Patch Changes
