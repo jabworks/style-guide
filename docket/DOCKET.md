@@ -9,14 +9,6 @@ Stale open markers cost real sessions — closing means moving.
 
 ## Committed
 
-### 11. Clear the advisories published since the September security pass (2026-09-24)
-
-Found 2026-09-24 while bumping Next (#8, PR #71). `pnpm audit:deps` reports 13 vulnerable packages on main against the 1
-accepted exception (brace-expansion@1.1.16) the September pass left. The new ones include brace-expansion 5.0.8 again,
-browserslist, fast-uri, js-yaml 3 and 4, nanoid 3, sharp, colord, and vitest 4.1.10 with @vitest/mocker. Several sit on
-override entries that pinned the previous fix, so the `overrides` block needs re-checking entry by entry, lowest fixed
-version per advisory as before. vitest 4 → 5 is also Dependabot group C, so the two may land together.
-
 ## Someday
 
 ### 6. Evaluate RN/Expo rules via oxlint jsPlugins (2026-09-22)
@@ -83,6 +75,13 @@ uses the TS JS API. #58 fails CI as a bundle, so split it rather than merging it
   14; on hold while the focus is oxc), F (TypeScript 7, still blocked). pnpm 12 is not in Dependabot's scope. The Next
   side of the TS 7 blocker (`experimental.useTypeScriptCli`, previously only in 16.3 previews) should be re-checked
   against 16.3.6 stable before the next TS 7 attempt.
+
+#### Status 2026-09-24 — group C shipped with #11
+
+- **C, test harness** (PR #74): vitest 5.0.1 cluster, jsdom 30, playwright 1.63, vite 8.3, plugin-react 6.1,
+  vitest-browser-react 2.3. The browser suite and a coverage run pass, with no config changes.
+- Dependabot closed #62 and opened #73 in its place. Once it rebases, what remains is B (changesets 3), E (the
+  ESLint/Prettier side, on hold), and F (TypeScript 7, blocked).
 
 ## Loose threads
 
