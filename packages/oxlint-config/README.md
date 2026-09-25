@@ -4,16 +4,17 @@ Opinionated [oxlint](https://oxc.rs/docs/guide/usage/linter/) presets ported fro
 
 ## Presets
 
-| Preset        | Extends      | Use for                                                |
-| ------------- | ------------ | ------------------------------------------------------ |
-| `base`        | —            | Any JS/TS project                                      |
-| `typescript`  | `base`       | TypeScript-only additions (some type-aware, see below) |
-| `react`       | `typescript` | React libraries and apps                               |
-| `next`        | `react`      | Next.js applications                                   |
-| `reactNative` | `typescript` | Expo and React Native apps (oxlint-only)               |
-| `node`        | `typescript` | Node.js backends and APIs                              |
-| `library`     | `typescript` | Framework-agnostic utility libraries                   |
-| `vitest`      | —            | Vitest test files (composable overlay)                 |
+| Preset        | Extends       | Use for                                                |
+| ------------- | ------------- | ------------------------------------------------------ |
+| `base`        | —             | Any JS/TS project                                      |
+| `typescript`  | `base`        | TypeScript-only additions (some type-aware, see below) |
+| `react`       | `typescript`  | React libraries and apps                               |
+| `next`        | `react`       | Next.js applications                                   |
+| `reactNative` | `typescript`  | React Native apps, bare or any framework (oxlint-only) |
+| `expo`        | `reactNative` | Expo apps, with expo-router conventions (oxlint-only)  |
+| `node`        | `typescript`  | Node.js backends and APIs                              |
+| `library`     | `typescript`  | Framework-agnostic utility libraries                   |
+| `vitest`      | —             | Vitest test files (composable overlay)                 |
 
 ## Installation
 
@@ -26,7 +27,7 @@ npm install -D oxlint oxlint-tsgolint @jabworks/oxlint-config
 ```ts
 // oxlint.config.ts — pick the preset that matches your project
 import { next } from '@jabworks/oxlint-config';
-// or: import { node, library, react, reactNative, typescript } from '@jabworks/oxlint-config';
+// or: import { expo, node, library, react, reactNative, typescript } from '@jabworks/oxlint-config';
 import { defineConfig } from 'oxlint';
 
 export default defineConfig({
@@ -76,25 +77,22 @@ around that:
 
 The typescript preset enables type-aware rules (`typescript/no-misused-promises`, `typescript/consistent-type-exports`, `typescript/restrict-template-expressions`, …). These require [`oxlint-tsgolint`](https://github.com/oxc-project/tsgolint) installed in the consuming project and running oxlint with `--type-aware`; without it they are silently skipped.
 
-## React Native preset
+## React Native and Expo presets
 
-`reactNative` is for Expo and bare React Native apps. It has no `@jabworks/eslint-plugin` counterpart.
+Neither preset has an `@jabworks/eslint-plugin` counterpart.
 
-It carries the same React rules as `react` (hooks, React Compiler rules, component style) but leaves out everything that
-assumes a DOM: the `jsx-a11y` plugin, `env.browser`, `react/button-has-type`, and `react/jsx-no-target-blank`. On top of
-that:
+### `reactNative`
+
+For any React Native app, bare or built on a framework. It carries the same React rules as `react` (hooks, React
+Compiler rules, component style) but leaves out everything that assumes a DOM: the `jsx-a11y` plugin, `env.browser`,
+`react/button-has-type`, and `react/jsx-no-target-blank`. On top of that:
 
 - **Globals.** oxlint has no react-native environment, so the preset enables `shared-node-browser` (fetch, timers, URL,
-  console) and declares `__DEV__` and `process` (for Expo's inlined `process.env.EXPO_PUBLIC_*`) as read-only globals.
-  `window` and `document` stay undefined.
-- **expo-router routes.** Every file under `app/` or `src/app/` is a route, layout, or special file (`_layout`,
-  `+not-found`, `+html`) that expo-router loads through its default export. There, `import/no-default-export` is off and
-  `import/prefer-default-export` is on. API routes (`*+api.ts`) export named HTTP handlers and keep the house named-export
-  rule. `*.config.{ts,mts,cts}` files, such as `app.config.ts`, get the same default-export allowance.
-- **Ignores.** `.expo/`, `android/`, `ios/`, and `expo-env.d.ts`.
+  console) and declares `__DEV__` and `process` (the bundler inlines `process.env` reads) as read-only globals. `window`
+  and `document` stay undefined.
+- **Ignores.** `android/` and `ios/`.
 
-expo-router's file names (`[id].tsx`, `[...rest].tsx`, `+not-found.tsx`, `(tabs)/_layout.tsx`) and platform suffixes
-(`card.ios.tsx`) already satisfy `unicorn/filename-case` in kebab case.
+Platform suffixes such as `card.ios.tsx` already satisfy `unicorn/filename-case` in kebab case.
 
 ```ts
 // oxlint.config.ts
@@ -104,8 +102,31 @@ import { defineConfig } from 'oxlint';
 export default defineConfig({ extends: [reactNative] });
 ```
 
+### `expo`
+
+`reactNative` plus expo-router's file conventions. It is a separate preset because the route override below would
+misfire in a bare React Native app, where an `app/` folder holds ordinary named-export modules.
+
+- **expo-router routes.** Every file under `app/` or `src/app/` is a route, layout, or special file (`_layout`,
+  `+not-found`, `+html`) that expo-router loads through its default export. There, `import/no-default-export` is off and
+  `import/prefer-default-export` is on. API routes (`*+api.ts`) export named HTTP handlers and keep the house named-export
+  rule. `*.config.{ts,mts,cts}` files, such as `app.config.ts`, must default-export too.
+- **Ignores.** `.expo/` and `expo-env.d.ts`.
+
+expo-router's file names (`[id].tsx`, `[...rest].tsx`, `+not-found.tsx`, `(tabs)/_layout.tsx`) already satisfy
+`unicorn/filename-case` in kebab case.
+
+```ts
+// oxlint.config.ts
+import { expo } from '@jabworks/oxlint-config';
+import { defineConfig } from 'oxlint';
+
+export default defineConfig({ extends: [expo] });
+```
+
 > **Note:** like every preset's ignore patterns, these only apply when the preset is spread or merged (see
-> [What survives `extends`](#what-survives-extends)). Expo's default `.gitignore` already covers these paths.
+> [What survives `extends`](#what-survives-extends)). A default React Native or Expo `.gitignore` already covers these
+> paths.
 
 ### Imperative renderers (three.js / React Three Fiber)
 
@@ -158,10 +179,11 @@ npm install -D eslint-plugin-expo oxlint-plugin-react-native
 
 ```ts
 // oxlint.config.ts
-import { expoPlugin, reactNative, reactNativePlugin } from '@jabworks/oxlint-config';
+import { expo, expoPlugin, reactNativePlugin } from '@jabworks/oxlint-config';
 import { defineConfig } from 'oxlint';
 
-export default defineConfig({ extends: [reactNative, expoPlugin, reactNativePlugin] });
+// A bare React Native app would use `reactNative` with `reactNativePlugin` alone.
+export default defineConfig({ extends: [expo, expoPlugin, reactNativePlugin] });
 ```
 
 Both plugins are optional peer dependencies of this package, which lets pnpm link them where the preset can resolve

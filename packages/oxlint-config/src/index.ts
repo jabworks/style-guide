@@ -1,5 +1,6 @@
 import base from './configs/base.js';
 import expoPlugin from './configs/expo-plugin.js';
+import expo from './configs/expo.js';
 import library from './configs/library.js';
 import next from './configs/next.js';
 import node from './configs/node.js';
@@ -19,6 +20,7 @@ export const config = {
     typescript,
     react,
     reactNative,
+    expo,
     next,
     node,
     library,
@@ -28,4 +30,4 @@ export const config = {
   },
 };
 
-export { base, expoPlugin, library, next, node, react, reactNative, reactNativePlugin, typescript, vitest };
+export { base, expo, expoPlugin, library, next, node, react, reactNative, reactNativePlugin, typescript, vitest };
