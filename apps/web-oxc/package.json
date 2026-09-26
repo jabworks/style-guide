@@ -24,6 +24,6 @@
     "@types/react-dom": "19.3.0",
     "oxlint": "^1.85.0",
     "oxlint-tsgolint": "^7.0.2002",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   }
 }
