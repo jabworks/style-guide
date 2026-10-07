@@ -22,10 +22,10 @@
     "@changesets/cli": "^3.0.3",
     "@jabworks/oxfmt-config": "workspace:*",
     "@jabworks/oxlint-config": "workspace:*",
-    "oxfmt": "^0.70.0",
-    "oxlint": "^1.85.0",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
     "semver": "^7.8.5",
-    "turbo": "^2.11.3",
+    "turbo": "^2.11.5",
     "typescript": "6.0.3"
   },
   "engines": {
