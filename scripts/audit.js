@@ -12,7 +12,9 @@
  * ever filed against a package name.
  *
  * Usage: pnpm audit:deps [--json]
- * Exits 1 when anything is found, so it can gate CI.
+ * Exits 1 when anything is found, so it can gate CI. Advisories listed in
+ * EXCEPTIONS are still printed but do not fail the run until their review-by
+ * date passes.
  */
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -23,6 +25,29 @@ import semver from 'semver';
 
 const ADVISORY_URL = 'https://registry.npmjs.org/-/npm/v1/security/advisories/bulk';
 const SEVERITY_ORDER = { critical: 0, high: 1, moderate: 2, low: 3 };
+
+/**
+ * Advisories accepted because no fixed version exists to override to. Each one
+ * says why it is safe here and lapses on `reviewBy`, so an exception is a dated
+ * decision rather than a permanent mute.
+ */
+const EXCEPTIONS = [
+  {
+    url: 'https://github.com/advisories/GHSA-vfj7-8cjw-p6xm',
+    name: 'braces',
+    reason:
+      'No fixed release: 3.0.3 is the latest. Reached only through micromatch in lint tooling (stylelint, the Next ESLint plugin), which expands glob patterns from repo config, not untrusted input.',
+    reviewBy: '2027-01-07',
+  },
+];
+
+const today = new Date().toISOString().slice(0, 10);
+
+/** The unexpired exception covering this advisory, if any. */
+const exceptionFor = (name, advisory) =>
+  EXCEPTIONS.find(
+    exception => exception.name === name && exception.url === advisory.url && today <= exception.reviewBy,
+  );
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const asJson = process.argv.includes('--json');
@@ -62,6 +87,7 @@ const main = async () => {
   const advisories = await fetchAdvisories(graph);
 
   const findings = [];
+  const accepted = [];
   for (const [name, list] of Object.entries(advisories)) {
     for (const version of graph[name] ?? []) {
       const matched = list.filter(advisory => {
@@ -73,7 +99,10 @@ const main = async () => {
           return false;
         }
       });
-      if (matched.length > 0) findings.push({ name, version, advisories: matched });
+      const open = matched.filter(advisory => exceptionFor(name, advisory) === undefined);
+      const excepted = matched.filter(advisory => exceptionFor(name, advisory) !== undefined);
+      if (open.length > 0) findings.push({ name, version, advisories: open });
+      if (excepted.length > 0) accepted.push({ name, version, advisories: excepted });
     }
   }
 
@@ -87,8 +116,17 @@ const main = async () => {
   }
 
   process.stdout.write(`Audited ${Object.keys(graph).length} packages from pnpm-lock.yaml\n`);
+  for (const { name, version, advisories: excepted } of accepted) {
+    for (const advisory of excepted) {
+      const { reason, reviewBy } = exceptionFor(name, advisory);
+      process.stdout.write(
+        `\naccepted until ${reviewBy}: ${name}@${version} [${advisory.severity}] ${advisory.title}\n`,
+      );
+      process.stdout.write(`      ${advisory.url}\n      ${reason}\n`);
+    }
+  }
   if (findings.length === 0) {
-    process.stdout.write('No known advisories.\n');
+    process.stdout.write(accepted.length > 0 ? '\nNo open advisories.\n' : 'No known advisories.\n');
     return;
   }
 
